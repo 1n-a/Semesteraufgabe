@@ -23,20 +23,28 @@ public abstract class Frage {
 	this.schwierigkeit = schwierigkeit;
     }
     
-    /**TODO: evtl. exception
+    /**
      * setzt den Vorlesungstyp (also die Vorlesung, zu der diese Frage passt) auf den übergebenen String
      * @param vorlesung
+     * @throws IllegalArgumentException, falls der String kürzer als 1 Zeichen oder leer ist
      */
-    public void setVorlesung(String vorlesung) {
+    public void setVorlesung(String vorlesung) throws IllegalArgumentException {
+	if (vorlesung == null ||vorlesung.length() == 0) {
+	    throw new IllegalArgumentException("Der String Vorlesung muss länger sein.");
+	}
 	this.vorlesung = vorlesung;
     }
     
-    /**TODO: evtl. exception
+    /**
      * setzt das Thema dieser Frage (also das Thema aus der Vorlesung, das am besten zu der Frage passt) auf den 
      * übergebenen String
      * @param thema
+     * @throws IllegalArgumentException, falls der String kürzer als 1 Zeichen oder leer ist.
      */
-    public void setThema(String thema) {
+    public void setThema(String thema) throws IllegalArgumentException {
+	if (thema == null || thema.length() == 0) {
+	    throw new IllegalArgumentException("Der String Thema muss länger sein.");
+	}
 	this.thema = thema;
     }
     
@@ -67,5 +75,9 @@ public abstract class Frage {
     
     public int getMaxPunkte() {
 	return this.maxPunkte;
+    }
+    
+    public int getID() {
+	return this.ID;
     }
 }

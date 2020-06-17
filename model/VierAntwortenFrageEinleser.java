@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class VierAntwortenFrageEinleser extends Dateieinleser {
 
-    //TODO: um exceptions kümmern!
     @Override
     public ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID) {
 	ArrayList<Frage> fragen = new ArrayList<Frage>();

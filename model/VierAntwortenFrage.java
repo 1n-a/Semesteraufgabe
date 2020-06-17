@@ -14,19 +14,27 @@ public class VierAntwortenFrage extends Frage {
 	this.setIndexRichtigeAntwort(index);
     }
     
-    /** TODO: evtl. exception
+    /** 
      * Setzt als Fragestellung dieser VierAntwortenFrage den übergebenen String
      * @param frage
+     * @throws IllegalArgumentException, falls der String kürzer als 1 Zeichen oder leer ist.
      */
-    public void setFrage(String frage) {
+    public void setFrage(String frage) throws IllegalArgumentException {
+	if (frage == null || frage.length() == 0) {
+	    throw new IllegalArgumentException("Der String Frage muss länger sein.");
+	}
 	this.frage = frage;
     }
     
-    /** TODO: evtl. exception
+    /** 
      * Setzt als Antwortmöglichkeiten dieser VierAntwortenFrage die übergebenen Strings in der Reihenfolge
      * @param a1, a2, a3, a4 die vier Antwortmöglichkeiten
+     * @throws IllegalArgumentException, falls einer der Strings kürzer als 1 Zeichen oder leer ist.
      */
-    public void setAntworten(String a1, String a2, String a3, String a4) {
+    public void setAntworten(String a1, String a2, String a3, String a4) throws IllegalArgumentException {
+	if (a1 == null || a1.length() == 0 || a2 == null || a2.length() == 0 || a3 == null || a3.length() == 0 || a4 == null || a4.length() == 0) {
+	    throw new IllegalArgumentException("Einer der Antwortstrings ist zu kurz.");
+	}
 	antworten[0] = a1;
 	antworten[1] = a2;
 	antworten[2] = a3;
