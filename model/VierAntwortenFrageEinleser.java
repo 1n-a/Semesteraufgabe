@@ -38,7 +38,7 @@ public class VierAntwortenFrageEinleser extends Dateieinleser {
     
     public static void main(String[] args) {
 	VierAntwortenFrageEinleser v = new VierAntwortenFrageEinleser();
-	ArrayList<Frage> f = v.DateiZuFragen(".\\src\\textdateien\\test.txt", -1);
+	ArrayList<Frage> f = v.DateiZuFragen(".\\src\\textdateien\\VierAntwortenFragen.txt", -1);
     }
 
 }
