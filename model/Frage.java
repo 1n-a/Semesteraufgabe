@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 public abstract class Frage {
     private int ID;
