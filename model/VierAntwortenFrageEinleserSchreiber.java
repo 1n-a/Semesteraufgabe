@@ -1,8 +1,12 @@
+/**
+ * Klasse zum Einlesen einer Datei, deren Inhalt VierAntwortenFragen sind
+ */
+
 package model;
 
 import java.util.ArrayList;
 
-public class VierAntwortenFrageEinleser extends Dateieinleser {
+public class VierAntwortenFrageEinleserSchreiber extends Dateieinleser implements Dateischreiber {
 
     @Override
     public ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID) {
@@ -35,9 +39,4 @@ public class VierAntwortenFrageEinleser extends Dateieinleser {
 	return fragen;
     }
     
-    public static void main(String[] args) {
-	VierAntwortenFrageEinleser v = new VierAntwortenFrageEinleser();
-	ArrayList<Frage> f = v.DateiZuFragen(".\\src\\textdateien\\VierAntwortenFragen.txt", -1);
-    }
-
 }

@@ -1,13 +1,22 @@
+/**
+ * Klasse, um Dateien einzulesen und zeilenweise die Strings in Fragen umzuwandeln
+ */
+
 package model;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Dateieinleser {
 
+    /**
+     * liest die Datei an der übergebenen Stelle ein und schreibt jede Zeile als ein String in eine ArrayList
+     * @param dateiname der Name und Pfad zu der Datei als String (wenn wie die Dateien in dem Ordner 
+     * "textdateien ablegen, muss hier ".\\src\\textdateien\\<name>.txt" stehen
+     * @return zeilen: ArrayList an Strings, die je der Inhalt einer Zeile der Datei ist
+     */
     public static ArrayList<String> dateiEinlesen(String dateiname) {
 	ArrayList<String> zeilen = new ArrayList<String>();  
 
@@ -32,6 +41,13 @@ public abstract class Dateieinleser {
         return zeilen;
     }
     
+    /**
+     * liest erst die Datei zeilenweise ein und wandelt dann jede Zeile, falls möglich, in ein Frageobjekt um
+     * @param dateiname der String der Stelle, wo die Datei zu finden ist
+     * @param letzteID die letzte ID, die übergeben wurde, jede neue Frage bekommt eine darauffolgend, eindeutige
+     * ID
+     * @return eine Liste an den erfolgreich umgewandelten Fragen
+     */
     public abstract ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID);
     
 }

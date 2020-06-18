@@ -1,3 +1,8 @@
+/**
+ * Klasse, die eine Frage repräsentiert, die eine Fragestellung und vier Antworten hat, von denen genau eine
+ * richtig ist (vgl. Wer wird Millionär)
+ */
+
 package model;
 
 public class VierAntwortenFrage extends Frage {
@@ -63,6 +68,23 @@ public class VierAntwortenFrage extends Frage {
     
     public int getIndexRichtigeAntwort() {
 	return this.indexRichtigeAntwort;
+    }
+    
+
+    /**
+     * Stringdarstellung der Frage, wie sie in der Textdatei stehen sollte
+     */
+    @Override
+    public String toString() {
+	return this.getSchwierigkeit().toString() + "$" + 
+		this.getVorlesung() + "$" + 
+		this.getThema() + "$" + 
+		this.getFrage() + "$" + 
+		this.antworten[0] + "$" + 
+		this.antworten[1] + "$" + 
+		this.antworten[2] + "$" +
+		this.antworten[3] + "$"
+		+ this.getIndexRichtigeAntwort();
     }
 
 }

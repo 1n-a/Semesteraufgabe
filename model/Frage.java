@@ -1,3 +1,7 @@
+/**
+ * abstrakte Klasse, die ein Frage repräsentiert
+ */
+
 package model;
 
 public abstract class Frage {
