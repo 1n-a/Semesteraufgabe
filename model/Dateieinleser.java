@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class Dateieinleser {
+public class Dateieinleser {
 
     /**
      * liest die Datei an der übergebenen Stelle ein und schreibt jede Zeile als ein String in eine ArrayList
@@ -48,6 +48,38 @@ public abstract class Dateieinleser {
      * ID
      * @return eine Liste an den erfolgreich umgewandelten Fragen
      */
-    public abstract ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID);
+    public static ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID) {
+	ArrayList<String> zeilen = Dateieinleser.dateiEinlesen(dateiname);
+	ArrayList<Frage> fragen = new ArrayList<Frage>();
+	for(String s : zeilen) {
+	    String[] woerter = s.split("\\$");
+	    if (woerter.length >= 1) {
+		if (woerter[0].equals(Fragentyp.VIERANTWORTENFRAGE.toString())) {
+		    if(woerter.length != 10) {
+			System.out.println("Ungültige Zeile gelesen");
+		    } else {
+			try {
+			    Schwierigkeit schwierigkeit = Schwierigkeit.valueOf(woerter[1]);
+			    String vorlesung = woerter[2];
+			    String thema = woerter[3];
+			    String frage = woerter[4];
+			    String a1 = woerter[5];
+			    String a2 = woerter[6];
+			    String a3 = woerter[7];
+			    String a4 = woerter[8];
+			    int index = Integer.parseInt(woerter[9]);
+			    fragen.add(new VierAntwortenFrage(++letzteID, schwierigkeit, vorlesung, thema,
+				    frage, a1, a2, a3, a4, index));
+			} catch (NumberFormatException e) {
+			    System.out.println("Fehler!");
+	 		} catch (IllegalArgumentException e) {
+			    System.out.println("Fehler!");
+			}
+		    }
+		}
+	    }
+	}
+	return fragen;
+    }
     
 }

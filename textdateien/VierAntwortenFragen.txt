@@ -1,3 +1,0 @@
-LEICHT$Informatik 1$Rechnerarchitektur$Welche der folgenden Aussagen stimmt nicht?$In Registern ist der Preis pro Bit hoch.$Alle Aussagen stimmen.$Im Arbeitsspeicher ist die Zugriffszeit hoch.$Die Kapazitaet in Cache ist groesser als in den Registern.$1
-LEICHT$Informatik 1$Rechnerarchitektur$Wofuer steht die Abkuerzung RAM?$Read Always Memory$Random Access Memory$Read Access Memory$Keine der Antworten ist richtig.$1
-LEICHT$Informatik 2$Java-Programmstruktur$Welcher Methodenkopf einer Mainmethode ist nicht richtig?$public static void main(String[] args$public static void main(String args[])$public static void main(String... args)$public static voidmain(string args)$3

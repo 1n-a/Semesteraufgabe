@@ -5,13 +5,15 @@
 package model;
 
 public abstract class Frage {
+    private Fragentyp typ;
     private int ID;
     private Schwierigkeit schwierigkeit;
     private String vorlesung;
     private String thema;
     private int maxPunkte;
     
-    public Frage(int id, Schwierigkeit schwierigkeit, String vorlesung, String thema, int maxPunkte) {
+    public Frage(Fragentyp typ, int id, Schwierigkeit schwierigkeit, String vorlesung, String thema, int maxPunkte) {
+	this.setFragentyp(typ);
 	this.ID = id;
 	this.setSchwierigkeit(schwierigkeit);
 	this.setVorlesung(vorlesung);
@@ -19,6 +21,13 @@ public abstract class Frage {
 	this.setMaxPunkte(maxPunkte);
     }
     
+    /**
+     * setzt den Fragentyp dieser Frage auf den übergebenen Wert
+     * @param typ
+     */
+    public void setFragentyp(Fragentyp typ) {
+	this.typ = typ;
+    }
     /** 
      * setzt die Schwierigkeit dieser Frage auf den gegebenen Wert
      * @param schwierigkeit
@@ -63,6 +72,10 @@ public abstract class Frage {
 	    throw new IllegalArgumentException("Bei dieser Frage müssen mehr Punkte erreichbar sein!");
 	}
 	this.maxPunkte = maxPunkte;
+    }
+    
+    public Fragentyp getTyp() {
+	return this.typ;
     }
     
     public Schwierigkeit getSchwierigkeit() {

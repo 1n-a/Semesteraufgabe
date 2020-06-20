@@ -13,7 +13,7 @@ public class VierAntwortenFrage extends Frage {
     public VierAntwortenFrage(int id, Schwierigkeit schwierigkeit, String vorlesung, String thema,
 	    String frage, String a1, String a2, String a3, String a4, 
 	    int index) {
-	super(id, schwierigkeit, vorlesung, thema, 1);
+	super(Fragentyp.VIERANTWORTENFRAGE, id, schwierigkeit, vorlesung, thema, 1);
 	this.setFrage(frage);
 	this.setAntworten(a1, a2, a3, a4);
 	this.setIndexRichtigeAntwort(index);
@@ -76,7 +76,8 @@ public class VierAntwortenFrage extends Frage {
      */
     @Override
     public String toString() {
-	return this.getSchwierigkeit().toString() + "$" + 
+	return  this.getTyp().toString() + "$" + 
+		this.getSchwierigkeit().toString() + "$" + 
 		this.getVorlesung() + "$" + 
 		this.getThema() + "$" + 
 		this.getFrage() + "$" + 
