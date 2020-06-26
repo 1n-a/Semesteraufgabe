@@ -73,6 +73,7 @@ public class VierAntwortenFrage extends Frage {
 
     /**
      * Stringdarstellung der Frage, wie sie in der Textdatei stehen sollte
+     * Format: typ$schwierigkeit$vorlesung$thema$frage$a1$a2$a3$a4$indexRichtigeAntwort
      */
     @Override
     public String toString() {

@@ -63,9 +63,8 @@ public class Fragencontainer implements Iterable<Frage> {
 
     /*public static void main(String[] args) {
 	Fragencontainer f = Fragencontainer.instance();
-	f.linkFrage(new VierAntwortenFrage(3, Schwierigkeit.LEICHT, "Test", "Test",
-	    "frage", "a1", "a2", "a3", "a4", 
-	    2));
+	f.linkFrage(new MuendlicheAntwortFrage(3, Schwierigkeit.SCHWER, "Sonstiges", "Sonstiges", "Wie viele "
+		+ "Informatiker braucht man, um eine Glühbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
 	f.save();
     }*/
     

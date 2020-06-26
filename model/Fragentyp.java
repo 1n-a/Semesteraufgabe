@@ -1,5 +1,5 @@
 package model;
 
 public enum Fragentyp {
-    VIERANTWORTENFRAGE;
+    VIERANTWORTENFRAGE, MUENDLICHEANTWORTFRAGE;
 }

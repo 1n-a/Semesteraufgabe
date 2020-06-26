@@ -76,6 +76,22 @@ public class Dateieinleser {
 			    System.out.println("Fehler!");
 			}
 		    }
+		} else if(woerter[0].equals(Fragentyp.MUENDLICHEANTWORTFRAGE.toString())) {
+		    if(woerter.length != 6) {
+			System.out.println("Ungültige Zeile gelesen");
+		    } else {
+			try {
+			    Schwierigkeit schwierigkeit = Schwierigkeit.valueOf(woerter[1]);
+			    String vorlesung = woerter[2];
+			    String thema = woerter[3];
+			    String frage = woerter[4];
+			    String antwort = woerter[5];
+			    fragen.add(new MuendlicheAntwortFrage(++letzteID, schwierigkeit, vorlesung, thema,
+				    frage, antwort));
+			} catch (IllegalArgumentException e) {
+			    System.out.println("Fehler!");
+			}
+		    }
 		}
 	    }
 	}
