@@ -13,7 +13,7 @@ public class VierAntwortenFrage extends Frage {
     public VierAntwortenFrage(int id, Schwierigkeit schwierigkeit, String vorlesung, String thema,
 	    String frage, String a1, String a2, String a3, String a4, 
 	    int index) {
-	super(Fragentyp.VIERANTWORTENFRAGE, id, schwierigkeit, vorlesung, thema, 1);
+	super(Fragentyp.VierAntwortenFrage, id, schwierigkeit, vorlesung, thema, 1);
 	this.setFrage(frage);
 	this.setAntworten(a1, a2, a3, a4);
 	this.setIndexRichtigeAntwort(index);
@@ -87,6 +87,32 @@ public class VierAntwortenFrage extends Frage {
 		this.antworten[2] + "$" +
 		this.antworten[3] + "$"
 		+ this.getIndexRichtigeAntwort();
+    }
+    
+    //@Override
+    public static Frage StringZuFrage(String[] woerter, int letzteID) throws IllegalArgumentException {
+	if(woerter.length != 10) {
+		throw new IllegalArgumentException("Zeile mit zu wenig Attributen gelesen");
+	} else {
+	    try {
+		Schwierigkeit schwierigkeit = Schwierigkeit.valueOf(woerter[1]);
+		String vorlesung = woerter[2];
+		String thema = woerter[3];
+		String frage = woerter[4];
+		String a1 = woerter[5];
+		String a2 = woerter[6];
+		String a3 = woerter[7];
+		String a4 = woerter[8];
+		int index = Integer.parseInt(woerter[9]);
+		return new VierAntwortenFrage(++letzteID, schwierigkeit, vorlesung, thema,
+			    frage, a1, a2, a3, a4, index);
+	    } catch (NumberFormatException e) {
+		System.out.println("Fehler!");
+	    } catch (IllegalArgumentException e) {
+		System.out.println("Fehler!");
+	    }
+	}
+	return null;
     }
 
 }

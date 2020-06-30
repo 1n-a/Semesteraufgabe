@@ -22,6 +22,17 @@ public abstract class Frage {
     }
     
     /**
+     * die Methode soll in den Unterklassen überschrieben werden und dort ein neues Fragenobjekt erstellen
+     * @param woerter ein Array, in dem eine Zeile aus der Textdatei getrennt nach '$' steht
+     * @param letzteID 
+     * @return eine neue Frage
+     * @throws IllegalArgumentException falls die Anzahl der Wörter nicht stimmt
+     */
+    public static Frage StringZuFrage(String[] woerter, int letzteID) throws IllegalArgumentException {
+	return null;
+    }
+    
+    /**
      * setzt den Fragentyp dieser Frage auf den übergebenen Wert
      * @param typ
      */

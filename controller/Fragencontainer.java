@@ -61,11 +61,11 @@ public class Fragencontainer implements Iterable<Frage> {
 	return fragen.iterator();
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
 	Fragencontainer f = Fragencontainer.instance();
 	f.linkFrage(new MuendlicheAntwortFrage(3, Schwierigkeit.SCHWER, "Sonstiges", "Sonstiges", "Wie viele "
 		+ "Informatiker braucht man, um eine Glühbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
 	f.save();
-    }*/
+    }
     
 }
