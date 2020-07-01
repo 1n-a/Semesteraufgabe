@@ -15,7 +15,7 @@ public class Dateieinleser {
      * liest die Datei an der übergebenen Stelle ein und schreibt jede Zeile als ein String in eine ArrayList
      * @param dateiname der Name und Pfad zu der Datei als String (wenn wie die Dateien in dem Ordner 
      * "textdateien ablegen, muss hier ".\\src\\textdateien\\<name>.txt" stehen
-     * @return zeilen: ArrayList an Strings, die je der Inhalt einer Zeile der Datei ist
+     * @return zeilen: ArrayList an Strings, die je der Inhalt einer Zeile der Datei ist :-)
      */
     public static ArrayList<String> dateiEinlesen(String dateiname) {
 	ArrayList<String> zeilen = new ArrayList<String>();  
