@@ -44,11 +44,9 @@ public class Dateieinleser {
     /**
      * liest erst die Datei zeilenweise ein und wandelt dann jede Zeile, falls möglich, in ein Frageobjekt um
      * @param dateiname der String der Stelle, wo die Datei zu finden ist
-     * @param letzteID die letzte ID, die übergeben wurde, jede neue Frage bekommt eine darauffolgend, eindeutige
-     * ID
      * @return eine Liste an den erfolgreich umgewandelten Fragen
      */
-    public static ArrayList<Frage> DateiZuFragen(String dateiname, int letzteID) {
+    public static ArrayList<Frage> DateiZuFragen(String dateiname) {
 	ArrayList<String> zeilen = Dateieinleser.dateiEinlesen(dateiname);
 	ArrayList<Frage> fragen = new ArrayList<Frage>();
 	for(String s : zeilen) {
@@ -56,13 +54,13 @@ public class Dateieinleser {
 	    if (woerter.length >= 1) {
 		if (woerter[0].equals(Fragentyp.VierAntwortenFrage.toString())) {
 		    try {
-			fragen.add(VierAntwortenFrage.StringZuFrage(woerter, letzteID++));
+			fragen.add(VierAntwortenFrage.StringZuFrage(woerter));
 		    } catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		    }
 		} else if(woerter[0].equals(Fragentyp.MuendlicheAntwortFrage.toString())) {
 		    try {
-			fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter, letzteID++));
+			fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter));
 		    } catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		    }

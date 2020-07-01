@@ -9,6 +9,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import model.*;
 
@@ -18,7 +19,7 @@ public class Fragencontainer implements Iterable<Frage> {
     private String dateiname = ".\\src\\textdateien\\Fragen.txt";
     
     private Fragencontainer() {
-	fragen = Dateieinleser.DateiZuFragen(dateiname, -1);
+	fragen = Dateieinleser.DateiZuFragen(dateiname);
     }
     
     public static Fragencontainer instance() {
@@ -52,6 +53,70 @@ public class Fragencontainer implements Iterable<Frage> {
 	return this.fragen;
     }
     
+    /**
+     * gibt gefilterte Fragen zurück
+     * @param vorlesungen alle Vorlesungen, aus denen Themen vorkommen sollen
+     * falls vorlesungen null ist, werden alle Vorlesungen ausgewählt
+     * @param themen alle Themen, zu denen Fragen vorkommen sollen
+     * falls themen null ist, werden alle Themen ausgewählt
+     * @param anzahl die gewünschte Anzahl an Fragen
+     * falls anzahl -1 ist, werden alle Fragen ausgewählt
+     * @return
+     */
+    public ArrayList<Frage> getFragenGefiltert(ArrayList<String> vorlesungen, ArrayList<String> themen, int anzahl) {
+	ArrayList<Frage> fragen = this.getFragen();
+	Object[] fr;
+	if (vorlesungen != null && themen != null) {
+	    fr = fragen.stream()
+		    .filter(f -> vorlesungen.contains(f.getVorlesung()))
+		    .filter(f -> themen.contains(f.getThema()))
+		    .toArray();
+	} else if (vorlesungen == null && themen != null) {
+	    fr = fragen.stream()
+		    .filter(f -> themen.contains(f.getThema()))
+		    .toArray();
+	} else if (vorlesungen != null && themen == null) {
+	    fr = fragen.stream()
+		    .filter(f -> vorlesungen.contains(f.getVorlesung()))
+		    .toArray();
+	} else {
+	    fr = fragen.stream()
+		    .toArray();
+	}
+	fragen = new ArrayList<Frage>();
+	if (anzahl > 0) {
+	    if (anzahl >= fr.length) {
+		for (Object i : fr) {
+		    fragen.add((Frage) i);
+		}
+		return fragen;
+	    }
+	    ArrayList<Integer> indices = Fragencontainer.indicesFragen(fr.length, anzahl);
+	    for (int i : indices) {
+		fragen.add((Frage) fr[i]);
+	    }
+	} else {
+	    for (Object i : fr) {
+		fragen.add((Frage) i);
+	    }
+	}
+	return fragen;
+    }
+    
+    private static ArrayList<Integer> indicesFragen(int anzahlFragen, int anzahlGewuenscht) {
+	Random r = new Random();
+	ArrayList<Integer> ret = new ArrayList<>();
+	int counter = 0;
+	while(counter < anzahlGewuenscht) {
+	    int i = r.nextInt(anzahlFragen);
+	    if (!ret.contains(i)) {
+		ret.add(i);
+		counter++;
+	    }
+	}
+	return ret;
+    }
+    
     public boolean save() {
 	return Dateischreiber.FragenZuDatei(dateiname, fragen);
     }
@@ -61,11 +126,19 @@ public class Fragencontainer implements Iterable<Frage> {
 	return fragen.iterator();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
+	ArrayList<Integer> a = Fragencontainer.indicesFragen(40, 20);
+	
 	Fragencontainer f = Fragencontainer.instance();
-	f.linkFrage(new MuendlicheAntwortFrage(3, Schwierigkeit.SCHWER, "Sonstiges", "Sonstiges", "Wie viele "
+	ArrayList<String> str = new ArrayList<String>();
+	str.add("Rechnerarchitektur");
+	str.add("Sonstiges");
+	ArrayList<String> str2 = new ArrayList<String>();
+	str2.add("Informatik 1");
+	ArrayList<Frage> fr = f.getFragenGefiltert(null, null, -1);
+	f.linkFrage(new MuendlicheAntwortFrage("Sonstiges", "Sonstiges", "Wie viele "
 		+ "Informatiker braucht man, um eine Glühbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
 	f.save();
-    }
+    }*/
     
 }

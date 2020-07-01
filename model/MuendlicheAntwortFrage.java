@@ -4,24 +4,23 @@ public class MuendlicheAntwortFrage extends Frage {
     private String frage;
     private String antwort;
     
-    public MuendlicheAntwortFrage(int id, Schwierigkeit schwierigkeit, String vorlesung, String thema, String frage, String antwort) {
-	super(Fragentyp.MuendlicheAntwortFrage, id, schwierigkeit, vorlesung, thema, 1);
+    public MuendlicheAntwortFrage(String vorlesung, String thema, String frage, String antwort) {
+	super(Fragentyp.MuendlicheAntwortFrage, vorlesung, thema, 1);
 	this.setFrage(frage);
 	this.setAntwort(antwort);
     }
     
     //@Override
-    public static Frage StringZuFrage(String[] woerter, int letzteID) throws IllegalArgumentException {
-	if(woerter.length != 6) {
+    public static Frage StringZuFrage(String[] woerter) throws IllegalArgumentException {
+	if(woerter.length != 5) {
 		System.out.println("Ungültige Zeile gelesen");
 	} else {
 	    try {
-		Schwierigkeit schwierigkeit = Schwierigkeit.valueOf(woerter[1]);
-		String vorlesung = woerter[2];
-		String thema = woerter[3];
-		String frage = woerter[4];
-		String antwort = woerter[5];
-		return new MuendlicheAntwortFrage(++letzteID, schwierigkeit, vorlesung, thema,
+		String vorlesung = woerter[1];
+		String thema = woerter[2];
+		String frage = woerter[3];
+		String antwort = woerter[4];
+		return new MuendlicheAntwortFrage(vorlesung, thema,
 			    frage, antwort);
 	    } catch (IllegalArgumentException e) {
 		System.out.println("Fehler!");
@@ -68,7 +67,6 @@ public class MuendlicheAntwortFrage extends Frage {
      */
     public String toString() {
 	return this.getTyp().toString() + "$"
-		+ this.getSchwierigkeit().toString() + "$"
 		+ this.getVorlesung() + "$"
 		+ this.getThema() + "$"
 		+ this.getFrage() + "$"

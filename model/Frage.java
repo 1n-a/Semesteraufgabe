@@ -6,16 +6,12 @@ package model;
 
 public abstract class Frage {
     private Fragentyp typ;
-    private int ID;
-    private Schwierigkeit schwierigkeit;
     private String vorlesung;
     private String thema;
     private int maxPunkte;
     
-    public Frage(Fragentyp typ, int id, Schwierigkeit schwierigkeit, String vorlesung, String thema, int maxPunkte) {
+    public Frage(Fragentyp typ, String vorlesung, String thema, int maxPunkte) {
 	this.setFragentyp(typ);
-	this.ID = id;
-	this.setSchwierigkeit(schwierigkeit);
 	this.setVorlesung(vorlesung);
 	this.setThema(thema);
 	this.setMaxPunkte(maxPunkte);
@@ -38,13 +34,6 @@ public abstract class Frage {
      */
     public void setFragentyp(Fragentyp typ) {
 	this.typ = typ;
-    }
-    /** 
-     * setzt die Schwierigkeit dieser Frage auf den gegebenen Wert
-     * @param schwierigkeit
-     */
-    public void setSchwierigkeit(Schwierigkeit schwierigkeit) {
-	this.schwierigkeit = schwierigkeit;
     }
     
     /**
@@ -89,10 +78,6 @@ public abstract class Frage {
 	return this.typ;
     }
     
-    public Schwierigkeit getSchwierigkeit() {
-	return this.schwierigkeit;
-    }
-    
     public String getVorlesung() {
 	return this.vorlesung;
     }
@@ -103,9 +88,5 @@ public abstract class Frage {
     
     public int getMaxPunkte() {
 	return this.maxPunkte;
-    }
-    
-    public int getID() {
-	return this.ID;
     }
 }
