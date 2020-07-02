@@ -1,7 +1,7 @@
 /**
  * Container, um Fragen in einer ArrayList abzuspeichern
- * Dabei werden alle Änderungen durch die Standardverwaltungsoperationen nur in der Liste geändert,
- * um diese in die Textdatei zu übernehmen, muss die save()-Methode aufgerufen werden
+ * Dabei werden alle ï¿½nderungen durch die Standardverwaltungsoperationen nur in der Liste geï¿½ndert,
+ * um diese in die Textdatei zu ï¿½bernehmen, muss die save()-Methode aufgerufen werden
  * TODO: Methode zum Filtern der Fragen
  */
 
@@ -30,8 +30,9 @@ public class Fragencontainer implements Iterable<Frage> {
     }
     
     /**
-     * fügt die Frage der Datenstruktur hinzu, diese wird aber noch nicht in der Textdatei gespeichert!!!
-     * @param f die hinzuzufügende Frage
+     * fï¿½gt die Frage der Datenstruktur hinzu, diese wird aber noch nicht in der Textdatei gespeichert!!!
+     * @param f die hinzuzufï¿½gende Frage
+	 * :)
      */
     public void linkFrage(Frage f) {
 	this.fragen.add(f);
@@ -46,7 +47,7 @@ public class Fragencontainer implements Iterable<Frage> {
     }
     
     /**
-     * gibt eine Liste mit allen Fragen des Programms zurück
+     * gibt eine Liste mit allen Fragen des Programms zurï¿½ck
      * @return die Liste mit allen Fragen des Programms
      */
     public ArrayList<Frage> getFragen() {
@@ -54,13 +55,13 @@ public class Fragencontainer implements Iterable<Frage> {
     }
     
     /**
-     * gibt gefilterte Fragen zurück
+     * gibt gefilterte Fragen zurï¿½ck
      * @param vorlesungen alle Vorlesungen, aus denen Themen vorkommen sollen
-     * falls vorlesungen null ist, werden alle Vorlesungen ausgewählt
+     * falls vorlesungen null ist, werden alle Vorlesungen ausgewï¿½hlt
      * @param themen alle Themen, zu denen Fragen vorkommen sollen
-     * falls themen null ist, werden alle Themen ausgewählt
-     * @param anzahl die gewünschte Anzahl an Fragen
-     * falls anzahl -1 ist, werden alle Fragen ausgewählt
+     * falls themen null ist, werden alle Themen ausgewï¿½hlt
+     * @param anzahl die gewï¿½nschte Anzahl an Fragen
+     * falls anzahl -1 ist, werden alle Fragen ausgewï¿½hlt
      * @return
      */
     public ArrayList<Frage> getFragenGefiltert(ArrayList<String> vorlesungen, ArrayList<String> themen, int anzahl) {
@@ -137,7 +138,7 @@ public class Fragencontainer implements Iterable<Frage> {
 	str2.add("Informatik 1");
 	ArrayList<Frage> fr = f.getFragenGefiltert(null, null, -1);
 	f.linkFrage(new MuendlicheAntwortFrage("Sonstiges", "Sonstiges", "Wie viele "
-		+ "Informatiker braucht man, um eine Glühbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
+		+ "Informatiker braucht man, um eine Glï¿½hbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
 	f.save();
     }*/
     
