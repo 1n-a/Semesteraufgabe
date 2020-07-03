@@ -1,0 +1,4 @@
+VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Welche der folgenden Aussagen stimmt nicht?$Alle Aussagen stimmen.$In Registern ist der Preis pro Bit hoch.$Im Arbeitsspeicher ist die Zugriffszeit hoch.$Die Kapazitaet in Cache ist groesser als in den Registern.
+VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Wofuer steht die Abkuerzung RAM?$Random Access Memory$Read Always Memory$Read Access Memory$Keine der Antworten ist richtig.
+VierAntwortenFrage$Informatik 2$Java-Programmstruktur$Welcher Methodenkopf einer Mainmethode ist nicht richtig?$public static void main(String[] args)$public static void main(String args[])$public static void main(String... args)$public static void main(string args)
+MuendlicheAntwortFrage$Sonstiges$Sonstiges$Wie viele Informatiker braucht man, um eine Glühbirne zu wechseln?$Keinen, das ist kein Softwareproblem.
