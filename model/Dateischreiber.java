@@ -8,7 +8,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+
 
 public class Dateischreiber {
     
@@ -33,23 +33,6 @@ public class Dateischreiber {
             }
         }
         return true;
-    } 
- 
-    /**
-     * schreibt die Stringdarstellung der übergebenen Fragenliste zeilenweise in die Datei
-     * @param dateiname der String, wo die Datei zu finden ist
-     * @param fragen die zu schreibenden Frageobjekte
-     * @return false, falls (beim Beschreiben der Datei) ein Fehler aufgetreten ist, sonst true
-     */
-    public static boolean FragenZuDatei(String dateiname, ArrayList<Frage> fragen) {
-	String text = "";
-	for (Frage f : fragen) {
-	    text += f.toString() + "\n";
-	}
-	if (Dateischreiber.inDateiSchreiben(dateiname, text)) {
-	    return true;
-	}
-	return false;
     }
 }
 

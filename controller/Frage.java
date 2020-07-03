@@ -2,7 +2,7 @@
  * abstrakte Klasse, die ein Frage repräsentiert
  */
 
-package model;
+package controller;
 
 public abstract class Frage {
     private Fragentyp typ;

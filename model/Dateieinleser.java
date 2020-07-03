@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class Dateieinleser {
 
     /**
@@ -39,35 +40,6 @@ public class Dateieinleser {
                 }
         }
         return zeilen;
-    }
-    
-    /**
-     * liest erst die Datei zeilenweise ein und wandelt dann jede Zeile, falls möglich, in ein Frageobjekt um
-     * @param dateiname der String der Stelle, wo die Datei zu finden ist
-     * @return eine Liste an den erfolgreich umgewandelten Fragen
-     */
-    public static ArrayList<Frage> DateiZuFragen(String dateiname) {
-	ArrayList<String> zeilen = Dateieinleser.dateiEinlesen(dateiname);
-	ArrayList<Frage> fragen = new ArrayList<Frage>();
-	for(String s : zeilen) {
-	    String[] woerter = s.split("\\$");
-	    if (woerter.length >= 1) {
-		if (woerter[0].equals(Fragentyp.VierAntwortenFrage.toString())) {
-		    try {
-			fragen.add(VierAntwortenFrage.StringZuFrage(woerter));
-		    } catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		    }
-		} else if(woerter[0].equals(Fragentyp.MuendlicheAntwortFrage.toString())) {
-		    try {
-			fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter));
-		    } catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		    }
-		}
-	    }
-	}
-	return fragen;
     }
     
 }

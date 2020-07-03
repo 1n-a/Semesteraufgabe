@@ -1,8 +1,8 @@
-/**
+/** 
  * Container, um Fragen in einer ArrayList abzuspeichern
  * Dabei werden alle ï¿½nderungen durch die Standardverwaltungsoperationen nur in der Liste geï¿½ndert,
  * um diese in die Textdatei zu ï¿½bernehmen, muss die save()-Methode aufgerufen werden
- * TODO: Methode zum Filtern der Fragen
+ * TODO: Fehlerbehandlung, falls die Dateien nicht eingelesen werden können
  */
 
 package controller;
@@ -19,7 +19,7 @@ public class Fragencontainer implements Iterable<Frage> {
     private String dateiname = ".\\src\\textdateien\\Fragen.txt";
     
     private Fragencontainer() {
-	fragen = Dateieinleser.DateiZuFragen(dateiname);
+	this.load();
     }
     
     public static Fragencontainer instance() {
@@ -118,8 +118,48 @@ public class Fragencontainer implements Iterable<Frage> {
 	return ret;
     }
     
+    /**
+     * schreibt die Stringdarstellung der übergebenen Fragenliste zeilenweise in die Datei
+     * @return false, falls (beim Beschreiben der Datei) ein Fehler aufgetreten ist, sonst true
+     */
     public boolean save() {
-	return Dateischreiber.FragenZuDatei(dateiname, fragen);
+	String text = "";
+	for (Frage f : fragen) {
+	    text += f.toString() + "\n";
+	}
+	if (Dateischreiber.inDateiSchreiben(dateiname, text)) {
+	    return true;
+	}
+	return false;
+    }
+    
+    /**
+     * holt sich von dem Dateieinleser die einzelnen Zeilen der Textdatei und wandelt diese in eine ArrayList 
+     * an Fragen um
+     * @return true
+     */
+    public boolean load() {
+	ArrayList<String> zeilen = Dateieinleser.dateiEinlesen(dateiname);
+	this.fragen = new ArrayList<Frage>();
+	for(String s : zeilen) {
+	    String[] woerter = s.split("\\$");
+	    if (woerter.length >= 1) {
+		if (woerter[0].equals(Fragentyp.VierAntwortenFrage.toString())) {
+		    try {
+			fragen.add(VierAntwortenFrage.StringZuFrage(woerter));
+		    } catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		    }
+		} else if(woerter[0].equals(Fragentyp.MuendlicheAntwortFrage.toString())) {
+		    try {
+			fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter));
+		    } catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		    }
+		}
+	    }
+	}
+	return true;
     }
     
     @Override
@@ -127,19 +167,11 @@ public class Fragencontainer implements Iterable<Frage> {
 	return fragen.iterator();
     }
 
-    /*public static void main(String[] args) {
-	ArrayList<Integer> a = Fragencontainer.indicesFragen(40, 20);
-	
+    public static void main(String[] args) {
 	Fragencontainer f = Fragencontainer.instance();
-	ArrayList<String> str = new ArrayList<String>();
-	str.add("Rechnerarchitektur");
-	str.add("Sonstiges");
-	ArrayList<String> str2 = new ArrayList<String>();
-	str2.add("Informatik 1");
-	ArrayList<Frage> fr = f.getFragenGefiltert(null, null, -1);
 	f.linkFrage(new MuendlicheAntwortFrage("Sonstiges", "Sonstiges", "Wie viele "
 		+ "Informatiker braucht man, um eine Glï¿½hbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
 	f.save();
-    }*/
+    }
     
 }

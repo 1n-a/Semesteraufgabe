@@ -3,20 +3,17 @@
  * richtig ist (vgl. Wer wird Millionär)
  */
 
-package model;
+package controller;
 
 public class VierAntwortenFrage extends Frage {
     String frage;
     String[] antworten = new String[4];
-    int indexRichtigeAntwort;
     
     public VierAntwortenFrage(String vorlesung, String thema,
-	    String frage, String a1, String a2, String a3, String a4, 
-	    int index) {
+	    String frage, String a1, String a2, String a3, String a4) {
 	super(Fragentyp.VierAntwortenFrage, vorlesung, thema, 1);
 	this.setFrage(frage);
 	this.setAntworten(a1, a2, a3, a4);
-	this.setIndexRichtigeAntwort(index);
     }
     
     /** 
@@ -46,18 +43,6 @@ public class VierAntwortenFrage extends Frage {
 	antworten[3] = a4;
     }
     
-    /**
-     * Setzt den Index im Feld antworten, bei dem die richtige Antwort steht, auf den übergebenen Wert, falls er
-     * auf einen String in dem Feld zeigt.
-     * @param index
-     */
-    public void setIndexRichtigeAntwort(int index) throws IllegalArgumentException {
-	if (index < 0 || index > 3) {
-	    throw new IllegalArgumentException("Der Index zeigt auf keine Antwort :-(");
-	}
-	this.indexRichtigeAntwort = index;
-    }
-    
     public String getFrage() {
 	return this.frage;
     }
@@ -65,10 +50,7 @@ public class VierAntwortenFrage extends Frage {
     public String[] getAntworten() {
 	return this.antworten;
     }
-    
-    public int getIndexRichtigeAntwort() {
-	return this.indexRichtigeAntwort;
-    }
+
     
 
     /**
@@ -84,13 +66,12 @@ public class VierAntwortenFrage extends Frage {
 		this.antworten[0] + "$" + 
 		this.antworten[1] + "$" + 
 		this.antworten[2] + "$" +
-		this.antworten[3] + "$"
-		+ this.getIndexRichtigeAntwort();
+		this.antworten[3] + "$";
     }
     
     //@Override
     public static Frage StringZuFrage(String[] woerter) throws IllegalArgumentException {
-	if(woerter.length != 9) {
+	if(woerter.length != 8) {
 		throw new IllegalArgumentException("Zeile mit zu wenig Attributen gelesen");
 	} else {
 	    try {
@@ -101,9 +82,8 @@ public class VierAntwortenFrage extends Frage {
 		String a2 = woerter[5];
 		String a3 = woerter[6];
 		String a4 = woerter[7];
-		int index = Integer.parseInt(woerter[8]);
 		return new VierAntwortenFrage(vorlesung, thema,
-			    frage, a1, a2, a3, a4, index);
+			    frage, a1, a2, a3, a4);
 	    } catch (NumberFormatException e) {
 		System.out.println("Fehler!");
 	    } catch (IllegalArgumentException e) {

@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 public class MuendlicheAntwortFrage extends Frage {
     private String frage;
