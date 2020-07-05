@@ -28,6 +28,8 @@ public abstract class Frage {
 	return null;
     }
     
+    public abstract String toStringTextdatei();
+    
     /**
      * setzt den Fragentyp dieser Frage auf den übergebenen Wert
      * @param typ
