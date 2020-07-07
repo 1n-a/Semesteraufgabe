@@ -66,6 +66,12 @@ public class MuendlicheAntwortFrage extends Frage {
      * Format: typ$schwierigkeit$vorlesung$thema$frage$antwort
      */
     public String toString() {
+	return this.getFrage() + " "
+		+ this.getAntwort();
+    }
+
+    @Override
+    public String toStringTextdatei() {
 	return this.getTyp().toString() + "$"
 		+ this.getVorlesung() + "$"
 		+ this.getThema() + "$"

@@ -30,20 +30,22 @@ public class Fragencontainer implements Iterable<Frage> {
     }
     
     /**
-     * f�gt die Frage der Datenstruktur hinzu, diese wird aber noch nicht in der Textdatei gespeichert!!!
+     * f�gt die Frage der Datenstruktur und der Textdatei hinzu
      * @param f die hinzuzuf�gende Frage
 	 * :)
      */
     public void linkFrage(Frage f) {
 	this.fragen.add(f);
+	this.save();
     }
     
     /**
-     * entfernt die Frage aus der Datenstruktur, diese wird aber noch nicht in der Textdatei gespeichert!!!
+     * entfernt die Frage aus der Datenstruktur und der Textdatei
      * @param f die zu entfernende Frage
      */
     public void unlinkFrage(Frage f) {
 	this.fragen.remove(f);
+	this.save();
     }
     
     /**
@@ -123,9 +125,10 @@ public class Fragencontainer implements Iterable<Frage> {
      * @return false, falls (beim Beschreiben der Datei) ein Fehler aufgetreten ist, sonst true
      */
     public boolean save() {
+	String n = System.getProperty("line.separator");
 	String text = "";
 	for (Frage f : fragen) {
-	    text += f.toString() + "\n";
+	    text += f.toStringTextdatei() + n;
 	}
 	if (Dateischreiber.inDateiSchreiben(dateiname, text)) {
 	    return true;

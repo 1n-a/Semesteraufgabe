@@ -59,14 +59,11 @@ public class VierAntwortenFrage extends Frage {
      */
     @Override
     public String toString() {
-	return  this.getTyp().toString() + "$" +
-		this.getVorlesung() + "$" + 
-		this.getThema() + "$" + 
-		this.getFrage() + "$" + 
-		this.antworten[0] + "$" + 
-		this.antworten[1] + "$" + 
-		this.antworten[2] + "$" +
-		this.antworten[3] + "$";
+	return  this.getFrage() + " " +
+		this.antworten[0] + " - " + 
+		this.antworten[1] + " - " + 
+		this.antworten[2] + " - " +
+		this.antworten[3];
     }
     
     //@Override
@@ -91,6 +88,18 @@ public class VierAntwortenFrage extends Frage {
 	    }
 	}
 	return null;
+    }
+
+    @Override
+    public String toStringTextdatei() {
+	return  this.getTyp().toString() + "$" +
+		this.getVorlesung() + "$" + 
+		this.getThema() + "$" + 
+		this.getFrage() + "$" + 
+		this.antworten[0] + "$" + 
+		this.antworten[1] + "$" + 
+		this.antworten[2] + "$" +
+		this.antworten[3];
     }
 
 }
