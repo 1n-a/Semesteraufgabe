@@ -46,6 +46,7 @@ public class Spielauswahl extends JFrame implements ActionListener {
         exit.addActionListener(this);
 
         this.add(south, BorderLayout.SOUTH);
+        this.standard.addActionListener(this);
 
         setVisible(true);
     }
@@ -57,6 +58,9 @@ public class Spielauswahl extends JFrame implements ActionListener {
         if(e.getSource() == exit){
             new Hauptmenue("Hauptmenue");
             dispose();
+        } else if (e.getSource() == this.standard) {
+            new FilterDialog(new StandardspielManager());
+            this.dispose();
         }
     }
 }

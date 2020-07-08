@@ -41,7 +41,7 @@ public class ListDialog extends JDialog implements ActionListener {
 	this.add(sp, BorderLayout.NORTH);
 	
 	JPanel south = new JPanel(new GridLayout(0, 6));
-	ImageIcon hinzufuegenBild = new ImageIcon(".\\src\\bilder\\hinzufuegen.png");
+	ImageIcon hinzufuegenBild = new ImageIcon(".src\\bilder\\hinzufuegen.png");
 	ImageIcon bearbeitenBild = new ImageIcon(".\\src\\bilder\\bearbeiten.png");
 	ImageIcon loeschenBild = new ImageIcon(".\\src\\bilder\\loeschen.png");
 	

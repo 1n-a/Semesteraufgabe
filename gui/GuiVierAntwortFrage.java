@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.VierAntwortenFrage;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +18,8 @@ public class GuiVierAntwortFrage extends JFrame implements ActionListener {
     private JButton buttonFalsch3;
     private JButton weiter = new JButton("naechste Frage");
     private JButton exit = new JButton("Ende");
+    private SpielManager manager;
+    private boolean richtig = false;
 
 
 
@@ -77,6 +82,12 @@ public class GuiVierAntwortFrage extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    public GuiVierAntwortFrage(VierAntwortenFrage f, SpielManager manager) {
+	this("Frage", f.getFrage(), f.getAntworten()[0], f.getAntworten()[1], 
+		f.getAntworten()[2], f.getAntworten()[3]);
+	this.manager = manager;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == exit) {
@@ -84,9 +95,16 @@ public class GuiVierAntwortFrage extends JFrame implements ActionListener {
             dispose();
         } else if (e.getSource() == weiter) {
             //funktion einfügen
+            if (richtig) {
+        	manager.next(1);
+            } else {
+        	manager.next(0);
+            }
+            this.dispose();
         } else if (e.getSource() == buttonRichtig) {
             buttonRichtig.setBackground(Color.green);
             deactivateAnswers();
+            richtig = true;
         } else if (e.getSource() == buttonFalsch1) {
             buttonFalsch1.setBackground(Color.red);
             buttonRichtig.setBackground(Color.green);

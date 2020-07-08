@@ -2,6 +2,9 @@ package gui;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import controller.MuendlicheAntwortFrage;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +27,9 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
     private JTextArea frageFeld = new JTextArea(12, 20);
 
     private JPanel navigation;
+    
+    private SpielManager manager;
+    private boolean richtig = false;
 
     public GuiMuendlicheAntwortFrage(String title, String frageT, String loesungT) {
 
@@ -85,8 +91,14 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
         nein.setVisible(false);
         richtigeAntwort.setVisible(false);
         weiter.setVisible(false);
+        weiter.addActionListener(this);
 
         setVisible(true);
+    }
+
+    public GuiMuendlicheAntwortFrage(MuendlicheAntwortFrage f, SpielManager manager) {
+	this("Frage", f.getFrage(), f.getAntwort());
+	this.manager = manager;
     }
 
     @Override
@@ -112,11 +124,19 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
             ja.setEnabled(false);
             nein.setEnabled(false);
             weiter.setVisible(true);
+            richtig = true;
         } else if(e.getSource() == nein) {
             nein.setBackground(Color.red);
             ja.setEnabled(false);
             nein.setEnabled(false);
             weiter.setVisible(true);
+        } else if(e.getSource() == weiter) {
+            if (richtig) {
+        	manager.next(1);
+            } else {
+        	manager.next(0);
+            }
+            this.dispose();
         }
     }
 }
