@@ -2,5 +2,5 @@ VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Wofuer steht die Abkuerzung R
 MuendlicheAntwortFrage$Sonstiges$Sonstiges$Wie viele Informatiker braucht man, um eine Glühbirne zu wechseln?$Keinen, das ist kein Softwareproblem!
 VierAntwortenFrage$Informatik 2$Java-Programmstruktur$Welcher Methodenkopf einer Mainmethode ist nicht richtig?$public static void main(string args)$public static void main(String args[])$public static void main(String... args)$public static void main(String[] args)
 VierAntwortenFrage$Informatik 1$Zahlencodierung$Gib 5 <<7 in Binärdarstellung an.$1010000000$101000000$1100000000$110000000
-MuendlicheAntwortFrage$Informatik 1$Zahlencodierung$Es sei x eine Variable vom Typ int. Gib einen C-Ausdruck an, der die dritte Binärstelle von x auf 0 setzt.$x & ~ (1 << 3)
 VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Welche der folgenden Aussagen stimmt nicht?$Keine Aussage stimmt.$In Registern ist der Preis pro Bit hoch.$Im Arbeitsspeicher ist die Zugriffszeit hoch.$Die Kapazitaet in Cache ist groesser als in den Registern.
+MuendlicheAntwortFrage$Informatik 1$Zahlencodierung$Es sei x eine Variable vom Typ int. Gib einen C-Ausdruck an, der die dritte Binärstelle von x auf 0 setzt.$x & ~ (1 << 3)

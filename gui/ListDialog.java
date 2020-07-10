@@ -35,13 +35,14 @@ public class ListDialog extends JDialog implements ActionListener {
     public ListDialog() {
 	super(new JFrame(), "Fragenliste", true);
 	list = new JList<Frage>();
+	list.setFont(GuiFarbauswahl.officialFont);
 	this.updateList();
 	JScrollPane sp = new JScrollPane(list);
 	this.setLayout(new BorderLayout());
 	this.add(sp, BorderLayout.NORTH);
 	
 	JPanel south = new JPanel(new GridLayout(0, 6));
-	ImageIcon hinzufuegenBild = new ImageIcon(".src\\bilder\\hinzufuegen.png");
+	ImageIcon hinzufuegenBild = new ImageIcon(".\\src\\bilder\\hinzufuegen.png");
 	ImageIcon bearbeitenBild = new ImageIcon(".\\src\\bilder\\bearbeiten.png");
 	ImageIcon loeschenBild = new ImageIcon(".\\src\\bilder\\loeschen.png");
 	
@@ -53,8 +54,11 @@ public class ListDialog extends JDialog implements ActionListener {
 	loeschen.addActionListener(this);
 	
 	JLabel hin = new JLabel("neue Frage");
+	hin.setFont(GuiFarbauswahl.officialFont);
 	JLabel bearb = new JLabel("Frage bearbeiten");
+	bearb.setFont(GuiFarbauswahl.officialFont);
 	JLabel loesch = new JLabel("Frage loeschen");
+	loesch.setFont(GuiFarbauswahl.officialFont);
 	
 	south.add(hinzufuegen);
 	south.add(hin);
@@ -63,6 +67,7 @@ public class ListDialog extends JDialog implements ActionListener {
 	south.add(loeschen);
 	south.add(loesch);
 	
+	south.setBackground(GuiFarbauswahl.officialColor);
 	this.add(south);
 	this.pack();
 	this.setVisible(true);
