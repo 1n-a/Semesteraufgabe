@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class GuiNamen extends JFrame implements ActionListener {
 
-    private JButton exit = new JButton("Zurueck");
+    private JButton exit = new JButton("Hauptmenue");
     private JButton weiter = new JButton("Weiter");
 
     public GuiNamen(String title) {

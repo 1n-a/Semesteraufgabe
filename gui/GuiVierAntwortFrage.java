@@ -147,38 +147,46 @@ public class GuiVierAntwortFrage extends JFrame implements ActionListener {
         } else if (e.getSource() == buttonA) {
             if (loesung == 'a') {
                 richtig = true;
+                feldARichtig.setBackground(Color.green);
+            } else {
+                feldARichtig.setBackground(Color.green);
+                feldAFalsch1.setBackground(Color.red);
+                feldAFalsch2.setBackground(Color.red);
+                feldAFalsch3.setBackground(Color.red);
             }
-            feldARichtig.setBackground(Color.green);
-            feldAFalsch1.setBackground(Color.red);
-            feldAFalsch2.setBackground(Color.red);
-            feldAFalsch3.setBackground(Color.red);
             deactivateAnswers();
         } else if (e.getSource() == buttonB) {
             if (loesung == 'b') {
                 richtig = true;
+                feldARichtig.setBackground(Color.green);
+            } else {
+                feldARichtig.setBackground(Color.green);
+                feldAFalsch1.setBackground(Color.red);
+                feldAFalsch2.setBackground(Color.red);
+                feldAFalsch3.setBackground(Color.red);
             }
-            feldARichtig.setBackground(Color.green);
-            feldAFalsch1.setBackground(Color.red);
-            feldAFalsch2.setBackground(Color.red);
-            feldAFalsch3.setBackground(Color.red);
             deactivateAnswers();
         } else if (e.getSource() == buttonC) {
             if (loesung == 'c') {
                 richtig = true;
+                feldARichtig.setBackground(Color.green);
+            } else {
+                feldARichtig.setBackground(Color.green);
+                feldAFalsch1.setBackground(Color.red);
+                feldAFalsch2.setBackground(Color.red);
+                feldAFalsch3.setBackground(Color.red);
             }
-            feldARichtig.setBackground(Color.green);
-            feldAFalsch1.setBackground(Color.red);
-            feldAFalsch2.setBackground(Color.red);
-            feldAFalsch3.setBackground(Color.red);
             deactivateAnswers();
         } else if (e.getSource() == buttonD) {
             if (loesung == 'd') {
                 richtig = true;
+                feldARichtig.setBackground(Color.green);
+            } else {
+                feldARichtig.setBackground(Color.green);
+                feldAFalsch1.setBackground(Color.red);
+                feldAFalsch2.setBackground(Color.red);
+                feldAFalsch3.setBackground(Color.red);
             }
-            feldARichtig.setBackground(Color.green);
-            feldAFalsch1.setBackground(Color.red);
-            feldAFalsch2.setBackground(Color.red);
-            feldAFalsch3.setBackground(Color.red);
             deactivateAnswers();
         }
     }

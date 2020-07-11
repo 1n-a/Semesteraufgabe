@@ -75,11 +75,11 @@ public class GuiFarbauswahl extends JFrame implements ActionListener {
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if (e.getSource() == schwarz) {
-            officialColor = Color.black;
+            officialColor = new Color(0,0,0);
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if (e.getSource() == weiss) {
-            officialColor = Color.white;
+            officialColor = new Color(255,255,255);
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if (e.getSource() == gelb) {

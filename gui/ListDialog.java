@@ -36,6 +36,7 @@ public class ListDialog extends JDialog implements ActionListener {
 	super(new JFrame(), "Fragenliste", true);
 	list = new JList<Frage>();
 	list.setFont(GuiFarbauswahl.officialFont);
+	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	this.updateList();
 	JScrollPane sp = new JScrollPane(list);
 	this.setLayout(new BorderLayout());
