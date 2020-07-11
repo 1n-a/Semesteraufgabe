@@ -6,6 +6,7 @@
 
 package controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import model.Dateieinleser;
@@ -50,6 +51,22 @@ public class Einstellungen {
     
     public String getFarbe() {
 	return this.farbe;
+    }
+    
+    public Color getColor() {
+	if (this.farbe.equals(Farbe.dunkelLila.toString())) {
+	    return new Color(Farbe.dunkelLila.getValue1(), Farbe.dunkelLila.getValue2(), Farbe.dunkelLila.getValue3());
+	} else if (this.farbe.equals(Farbe.gelb.toString())) {
+	    return new Color(Farbe.gelb.getValue1(), Farbe.gelb.getValue2(), Farbe.gelb.getValue3());
+	} else if (this.farbe.equals(Farbe.grau.toString())) {
+	    return new Color(Farbe.grau.getValue1(), Farbe.grau.getValue2(), Farbe.grau.getValue3());
+	} else if (this.farbe.equals(Farbe.pink.toString())) {
+	    return new Color(Farbe.pink.getValue1(), Farbe.pink.getValue2(), Farbe.pink.getValue3());
+	} else if (this.farbe.equals(Farbe.schwarz.toString())) {
+	    return new Color(Farbe.schwarz.getValue1(), Farbe.schwarz.getValue2(), Farbe.schwarz.getValue3());
+	} else {
+	    return new Color(Farbe.weiss.getValue1(), Farbe.weiss.getValue2(), Farbe.weiss.getValue3());
+	}
     }
     
     public void setFarbe(String farbe) {

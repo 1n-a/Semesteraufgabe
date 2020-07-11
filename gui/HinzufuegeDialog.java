@@ -41,6 +41,7 @@ public class HinzufuegeDialog extends JDialog implements ActionListener {
 	this.add(south);
 	
 	this.pack();
+	this.setLocationRelativeTo(null);
 	this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	this.setVisible(true);
 	

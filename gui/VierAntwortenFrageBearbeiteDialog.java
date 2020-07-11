@@ -129,6 +129,7 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	}
 	this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	this.pack();
+	this.setLocationRelativeTo(null);
 	this.setVisible(true);
     }
     

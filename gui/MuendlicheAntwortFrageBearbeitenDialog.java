@@ -95,6 +95,7 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	}
 	this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	this.pack();
+	this.setLocationRelativeTo(null);
 	this.setVisible(true);
     }
 

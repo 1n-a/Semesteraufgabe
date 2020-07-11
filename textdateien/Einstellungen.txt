@@ -1,4 +1,4 @@
-yellow
+gelb
 Minion
 klein
 plain

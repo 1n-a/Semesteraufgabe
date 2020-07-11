@@ -71,6 +71,7 @@ public class ListDialog extends JDialog implements ActionListener {
 	south.setBackground(GuiFarbauswahl.officialColor);
 	this.add(south);
 	this.pack();
+	this.setLocationRelativeTo(null);
 	this.setVisible(true);
     }
 

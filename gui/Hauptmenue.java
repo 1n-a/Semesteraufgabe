@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.Einstellungen;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,9 +22,13 @@ public class Hauptmenue extends JFrame implements ActionListener {
         this.setSize(500, 300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((EXIT_ON_CLOSE));
+        
+        Einstellungen einstellungen = Einstellungen.instance();
+        GuiFarbauswahl.officialColor = einstellungen.getColor();
+        
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
-
+        
         //Menüleiste
         JMenuBar menuBar = new JMenuBar();
         JSeparator sep = new JSeparator();
