@@ -72,6 +72,7 @@ public class FilterDialog extends JDialog implements ActionListener, AdjustmentL
 	this.add(south, BorderLayout.SOUTH);
 	
 	this.pack();
+	this.setLocationRelativeTo(null);
 	this.setVisible(true);
     }
 
@@ -105,6 +106,7 @@ public class FilterDialog extends JDialog implements ActionListener, AdjustmentL
 	    this.dispose();
 	} else if (e.getActionCommand().equals("Abbrechen")) {
 	    this.dispose();
+	    new Hauptmenue("Hauptmenue");
 	}
     }
 

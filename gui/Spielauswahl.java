@@ -59,8 +59,8 @@ public class Spielauswahl extends JFrame implements ActionListener {
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if (e.getSource() == this.standard) {
+            dispose();
             new FilterDialog(new StandardspielManager());
-            this.dispose();
         }
     }
 }

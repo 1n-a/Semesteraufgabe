@@ -16,7 +16,7 @@ public class GuiFarbauswahl extends JFrame implements ActionListener {
 
     static Color officialColor = Color.yellow;
 
-    static Font officialFont = new Font("TimesRoman", PLAIN, 30);
+    static Font officialFont = new Font("TimesRoman", PLAIN, 18);
     
     private Einstellungen einstellungen = Einstellungen.instance();
 
