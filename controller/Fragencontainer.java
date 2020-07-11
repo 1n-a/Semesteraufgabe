@@ -20,6 +20,11 @@ public class Fragencontainer implements Iterable<Frage> {
     
     private Fragencontainer() {
 	this.load();
+	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
+	for (Frage f : fragen) {
+	    vtc.addVorlesung(f.getVorlesung());
+	    vtc.addThema(f.getThema());
+	}
     }
     
     public static Fragencontainer instance() {
@@ -37,6 +42,9 @@ public class Fragencontainer implements Iterable<Frage> {
     public void linkFrage(Frage f) {
 	this.fragen.add(f);
 	this.save();
+	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
+	vtc.addVorlesung(f.getVorlesung());
+	vtc.addThema(f.getThema());
     }
     
     /**

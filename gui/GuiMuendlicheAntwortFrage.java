@@ -36,7 +36,7 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
         super(title);
         this.setSize(500, 300);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
+        this.setDefaultCloseOperation((DO_NOTHING_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
 
