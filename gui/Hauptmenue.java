@@ -78,7 +78,6 @@ public class Hauptmenue extends JFrame implements ActionListener {
             dispose();
         } else if(e.getSource() == fragen) {
             new ListDialog();
-            dispose();
         }
     }
 }
