@@ -1,22 +1,19 @@
 ToDo
 
-Buttons geben Rückgabewert zurück anstatt neue Fenster zu öffnen.
-    -> Koordination über entsprechende Spielablaufklasse
 
-Optionsauswahlbar oben als Leiste (nur in Hauptmenü)
-    -> Farbauswahl dorthin verschieben
-    -> Option zur Auswahl (Klein, Mittel, Groß)
-        -> ändert Fenstergröße und Schriftgröße
+überall wo es fehlt eine Default Close Operation
 
-4 Antworten - auch lange Texte in den Antwortknöpfen ermöglichen
-
-Gui 2 Spieler Namen eingeben
+Gui Namen
+    -> weiter Button belegen
+    -> abfragen, ob namen eingegeben wurden
+    -> Namen übernehmen für Stats
 
 Gui Übersicht Punkte mit Timer und Buzzer
 
-Gui Frage einstellen
-Gui Frage bearbeiten
-Gui Frage löschen       -> Zusammen in eins?
+Frage erstellen, Spiel auswählen
+    -> Kategorien per Checkbox oder Dropdown auswählen
+
+Programm beendet sich häufig nicht, wenn Fenster geschlossen werden
 
 Sinnvoll kommentieren
 

@@ -39,7 +39,6 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
-        Font officialFont = GuiFarbauswahl.officialFont;
 
 
         frageText = frageT;
@@ -47,7 +46,6 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
 
 
         frageFeld = new JTextArea(frageText,12, 20);
-        frageFeld.setFont(officialFont);
         JScrollPane scrollFrageFeld = new JScrollPane(frageFeld);
         frageFeld.setEnabled(true);
         frageFeld.setLineWrap(true);
