@@ -122,9 +122,20 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
                     bCountdown4.setBackground(Color.red);
                     bCountdown5.setBackground(Color.red);
                     timer.stop();
+                    activateBuzzer();
                 }
             }
         });
+    }
+
+    public void deactivateBuzzer() {
+        buzzer1.setEnabled(false);
+        buzzer2.setEnabled(false);
+    }
+
+    public void activateBuzzer() {
+        buzzer1.setEnabled(true);
+        buzzer2.setEnabled(true);
     }
 
     @Override
@@ -148,6 +159,7 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
         bCountdown4.setBackground(Color.white);
         bCountdown5.setBackground(Color.white);
         counter = 6;
+        deactivateBuzzer();
         countdown();
         timer.start();
     }
