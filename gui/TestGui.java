@@ -4,6 +4,7 @@ public class TestGui {
     public static void main(String[] args) {
         new Hauptmenue("Hauptmenue");
         //new GuiStatistikStandard(("Punktzahl"));
+        new GuiStatistikMp(("Punktzahl"));
         //new GuiNamen("Namen");
         //new Spielauswahl("Spielmodus");
         //new GuiMuendlicheAntwortFrage("Frage", "Hier koennte ihre Frage stehen", "Hier koennte ihre Loesung stehen");
