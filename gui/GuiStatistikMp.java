@@ -2,9 +2,7 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.Flow;
 
-import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 public class GuiStatistikMp extends JFrame {
 
