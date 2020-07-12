@@ -2,6 +2,16 @@ VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Wofuer steht die Abkuerzung R
 VierAntwortenFrage$Informatik 2$Java-Programmstruktur$Welcher Methodenkopf einer Mainmethode ist nicht richtig?$public static void main(string args)$public static void main(String args[])$public static void main(String... args)$public static void main(String[] args)
 VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Welche der folgenden Aussagen stimmt nicht?$Keine Aussage stimmt.$In Registern ist der Preis pro Bit hoch.$Im Arbeitsspeicher ist die Zugriffszeit hoch.$Die Kapazitaet in Cache ist groesser als in den Registern.
 MuendlicheAntwortFrage$Informatik 1$Java-Programmstruktur$Es sei x eine Variable vom Typ int. Gib einen C-Ausdruck an, der die dritte Binärstelle von x auf 0 setzt.$x & ~ (1 << 3)
-VierAntwortenFrage$Informatik 1$Pointer$Coole Frage$richtige Antwort$falsche Antwort$noch falscher$ganz falsch
 VierAntwortenFrage$Informatik 1$Zahlencodierung$Gib 5 <<7 in Binärdarstellung an.$1010000000$101000000$1100000000$110000000
-MuendlicheAntwortFrage$Test$Thema$Wie?$So!
+MuendlicheAntwortFrage$Informatik 1$Codierung reeller Zahlen$Wie viele Bits werden in der Gleitkomma-Codierung für das Vorzeichen benötigt?$1
+VierAntwortenFrage$Informatik 1$Codierung reeller Zahlen$Welche Zahl wird in der Gleitkommacodierung reeller Zahlen durch folgendes Bitmuster dargestellt? 11...10...0$- unendlich$+ unendlich$0$1/0
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Wie groß ist der Speicherbedarf für den Datentyp float in C?$4 Byte$1 Byte$2 Byte$8 Byte
+MuendlicheAntwortFrage$Informatik 1$einfache C-Programme$Welche Umwandlungsangabe braucht man in C für den Datentyp unsigned long?$%lu
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender Ausdruck in C? (x < y) ? x : y$x$y$das Minimum von x und y$das Maximum von x und y
+MuendlicheAntwortFrage$Informatik 1$einfache C-Programme$Durch welchen Ausdruck kann der C-Ausdruck v %= A ersetzt werden?$v = v % A
+VierAntwortenFrage$Informatik 1$Codierung reeller Zahlen$Betrachte folgenden Code in C. Welche Werte haben m und k?\nint n = 0\nint m = ++n; \nint k = n--;$m = 1, k = 1$m = 0, k = 0$m = 1, k = 0$m = 0, k = 1
+MuendlicheAntwortFrage$Informatik 1$einfache C-Programme$Was versteht man unter Lazy Evaluation?$Der ’und’-Operator && und der ’oder’-Operator || werden von links nach rechts ausgewertet, wobei dabei ggf. die Auswertung nachfolgender Ausdrücke unterbleibt.
+VierAntwortenFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Welchen Wertebereich hat der Datentyp boolean in Java?$true, false$true, false, unknown$0, 1$alle positiven ganzen Zahlen
+VierAntwortenFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Wie werden Klassen in Java angegeben?$<Sichtbarkeit> [abstract] [final] class <Klasse> [extends <Oberklasse>] [implements <Schnittstellenliste>] {<Rumpf>}$<Sichtbarkeit> [final] [abstract] class <Klasse> [extends <Oberklasse>] [implements <Schnittstellenliste>] {<Rumpf>}$<Sichtbarkeit> [abstract] [final] class <Klasse> [extends <Oberklassenliste>] [implements <Schnittstelle>] {<Rumpf>}$<Sichtbarkeit> [final] [abstract] class <Klasse> [extends <Oberklassenliste>] [implements <Schnittstellenliste>] {<Rumpf>}
+MuendlicheAntwortFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Was versteht man unter überladenen Operationen?$Zwei Operationen nennt man überladen, wenn sie den gleichen Namen, aber eine unterschiedliche Parameterliste haben.
+VierAntwortenFrage$Informatik 2$UML-Sequenzdiagramme$UML-Sequenzdiagramme: Welcher Name für einen Kommunikationspartner ist nicht sinnvoll?$_s: String_ (unterstrichen)$_String_ (unterstrichen)$User$x: Integer
