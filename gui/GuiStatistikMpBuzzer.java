@@ -1,8 +1,16 @@
 package gui;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 
 public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
@@ -22,6 +30,15 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
 
     private JLabel name1;
     private JLabel name2;
+    
+    //private String audioTonZaehlen = ".\\src\\audioDateien\\tonZaehlen.mp3";
+    private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen2.wav";
+    private String tonEnde = ".\\src\\audioDateien\\tonEnde2.wav";
+    //private String audioTonEnde = ".\\src\\audioDateien\\tonEnde.mp3";
+    private Clip clipZaehlen = null;
+    private Clip clipEnde = null;
+    private AudioInputStream streamZaehlen = null;
+    private AudioInputStream streamEnde = null;
 
     public GuiStatistikMpBuzzer(String title) {
 
@@ -101,19 +118,72 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 counter--;
-
+                
+                try {
+        	    streamZaehlen = AudioSystem.getAudioInputStream(new File(tonZaehlen).getAbsoluteFile());
+        	    clipZaehlen = AudioSystem.getClip(); 
+        	    clipZaehlen.open(streamZaehlen);
+        	    streamEnde = AudioSystem.getAudioInputStream(new File(tonEnde).getAbsoluteFile());
+        	    clipEnde = AudioSystem.getClip();
+        	    clipEnde.open(streamEnde);
+        	} catch (Exception e1) {
+        	    e1.printStackTrace();
+        	}
+                
                 if(counter == 5) {
                     bCountdown5.setBackground(Color.yellow);
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == 4) {
                     bCountdown4.setBackground(Color.yellow);
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == 3) {
                     bCountdown3.setBackground(Color.yellow);
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == 2) {
                     bCountdown2.setBackground(Color.yellow);
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == 1) {
                     bCountdown1.setBackground(Color.yellow);
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == 0) {
                     bCountdown0.setBackground(Color.yellow);
+                    try {
+                	if (clipEnde != null) {
+                	    clipEnde.start();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 } else if(counter == -1) {
                     bCountdown0.setBackground(Color.red);
                     bCountdown1.setBackground(Color.red);
@@ -123,6 +193,34 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
                     bCountdown5.setBackground(Color.red);
                     timer.stop();
                     activateBuzzer();
+                    try {
+                	if (clipZaehlen != null) {
+                	    clipZaehlen.close();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
+                    try {
+                	if (clipEnde != null) {
+                	    clipEnde.close();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
+                    try {
+                	if (streamZaehlen != null) {
+                	    streamZaehlen.close();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
+                    try {
+                	if (streamEnde != null) {
+                	    streamEnde.close();
+                	}
+                    } catch (Exception e2) {
+                	e2.printStackTrace();
+                    }
                 }
             }
         });

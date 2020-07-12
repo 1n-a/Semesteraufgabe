@@ -23,7 +23,7 @@ public class Fragencontainer implements Iterable<Frage> {
 	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 	for (Frage f : fragen) {
 	    vtc.addVorlesung(f.getVorlesung());
-	    vtc.addThema(f.getThema());
+	    vtc.addThema(f.getThema(), f.getVorlesung());
 	}
     }
     
@@ -40,11 +40,13 @@ public class Fragencontainer implements Iterable<Frage> {
 	 * :)
      */
     public void linkFrage(Frage f) {
-	this.fragen.add(f);
-	this.save();
-	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
-	vtc.addVorlesung(f.getVorlesung());
-	vtc.addThema(f.getThema());
+	if (!this.fragen.contains(f)) {
+	    this.fragen.add(f);
+	    this.save();
+	    VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
+	    vtc.addVorlesung(f.getVorlesung());
+	    vtc.addThema(f.getThema(), f.getVorlesung());
+	}
     }
     
     /**
@@ -178,11 +180,11 @@ public class Fragencontainer implements Iterable<Frage> {
 	return fragen.iterator();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 	Fragencontainer f = Fragencontainer.instance();
-	f.linkFrage(new MuendlicheAntwortFrage("Sonstiges", "Sonstiges", "Wie viele "
-		+ "Informatiker braucht man, um eine Gl�hbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
-	f.save();
-    }
+	//f.linkFrage(new MuendlicheAntwortFrage("Sonstiges", "Sonstiges", "Wie viele "
+	//	+ "Informatiker braucht man, um eine Gl�hbirne zu wechseln?", "Keinen, das ist kein Softwareproblem."));
+	//f.save();
+    } */
     
 }

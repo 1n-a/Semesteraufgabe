@@ -12,5 +12,9 @@ public abstract class SpielManager {
     }
     
     public abstract void next(int anzahlPunkte);
+    
+    public abstract void init(int anzahlFragen);
+    
+    public abstract void setNamen(String name1, String name2);
 
 }

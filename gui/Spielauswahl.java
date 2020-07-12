@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class Spielauswahl extends JFrame implements ActionListener {
 
     private JButton standard = new JButton("Standard");
@@ -47,6 +48,7 @@ public class Spielauswahl extends JFrame implements ActionListener {
 
         this.add(south, BorderLayout.SOUTH);
         this.standard.addActionListener(this);
+        this.abwechselnd.addActionListener(this);
 
         setVisible(true);
     }
@@ -61,6 +63,9 @@ public class Spielauswahl extends JFrame implements ActionListener {
         } else if (e.getSource() == this.standard) {
             dispose();
             new FilterDialog(new StandardspielManager());
+        } else if (e.getSource() == this.abwechselnd) {
+            dispose();
+            new GuiNamen("Namen eingeben", "Mp");
         }
     }
 }

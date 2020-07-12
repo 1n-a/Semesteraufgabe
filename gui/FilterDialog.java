@@ -52,7 +52,8 @@ public class FilterDialog extends JDialog implements ActionListener, AdjustmentL
 	this.add(north, BorderLayout.NORTH);
 	
 	JPanel center = new JPanel();
-	center.setLayout(new GridLayout(0, 2));
+	center.setLayout(new GridLayout(0, 3));
+	center.add(new JLabel("Anzahl Fragen: "));
 	anzahlFragen = new JScrollBar(JScrollBar.HORIZONTAL, 1, 0, 1, container.getFragen().size());
 	anzahlFragen.addAdjustmentListener(this);
 	center.add(anzahlFragen);
@@ -74,6 +75,11 @@ public class FilterDialog extends JDialog implements ActionListener, AdjustmentL
 	this.pack();
 	this.setLocationRelativeTo(null);
 	this.setVisible(true);
+    }
+    
+    public FilterDialog(SpielManager manager, String name1, String name2) {
+	this(manager);
+	this.manager.setNamen(name1, name2);
     }
 
     @Override
@@ -102,6 +108,7 @@ public class FilterDialog extends JDialog implements ActionListener, AdjustmentL
 	    int anzahlFragen = this.anzahlFragen.getValue();
 	    ArrayList<Frage> fragen = container.getFragenGefiltert(vorlesungen, themen, anzahlFragen);
 	    manager.setFragen(fragen);
+	    manager.init(fragen.size());
 	    manager.next(0);
 	    this.dispose();
 	} else if (e.getActionCommand().equals("Abbrechen")) {

@@ -104,6 +104,7 @@ public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener 
         // Die Quelle wird mit getSource() abgefragt und mit den
         // Buttons abgeglichen.
         if(e.getSource() == exit){
+            manager.next(-1);
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if(e.getSource() == loesung) {

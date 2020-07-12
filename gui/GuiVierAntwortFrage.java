@@ -135,6 +135,7 @@ public class GuiVierAntwortFrage extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == exit) {
+            manager.next(-1);
             new Hauptmenue("Hauptmenue");
             dispose();
         } else if (e.getSource() == weiter) {

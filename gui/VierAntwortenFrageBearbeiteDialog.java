@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -48,7 +47,9 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	for (String vorles : vtc.getVorlesungen()) {
 	    vorlesung.addItem(vorles);
 	}
+	vorlesung.addItem("eigene Vorlesung...");
 	vorlesung.setFont(GuiFarbauswahl.officialFont);
+	vorlesung.setEditable(true);
 	north.add(vorlesung);
 	JLabel them = new JLabel("Thema: ");
 	them.setFont(GuiFarbauswahl.officialFont);
@@ -56,8 +57,10 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	for (String the : vtc.getThemen()) {
 	    thema.addItem(the);
 	}
+	thema.addItem("eigenes Thema...");
 	north.add(thema);
 	thema.setFont(GuiFarbauswahl.officialFont);
+	thema.setEditable(true);
 	north.setBackground(GuiFarbauswahl.officialColor);
 	this.add(north, BorderLayout.NORTH);
 	

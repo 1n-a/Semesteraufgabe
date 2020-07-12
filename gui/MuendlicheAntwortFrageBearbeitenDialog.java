@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -43,6 +44,8 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	for (String vorles : vtc.getVorlesungen()) {
 	    vorlesung.addItem(vorles);
 	}
+	vorlesung.addItem("eigene Vorlesung...");
+	vorlesung.setEditable(true);
 	vorlesung.setFont(GuiFarbauswahl.officialFont);
 	north.add(vorlesung);
 	JLabel them = new JLabel("Thema: ");
@@ -51,6 +54,8 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	for (String the : vtc.getThemen()) {
 	    thema.addItem(the);
 	}
+	thema.addItem("eigenes Thema...");
+	thema.setEditable(true);
 	thema.setFont(GuiFarbauswahl.officialFont);
 	north.add(thema);
 	north.setBackground(GuiFarbauswahl.officialColor);
@@ -118,4 +123,8 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	    this.dispose();
 	}
     }
+    
+    /*public static void main(String[] args) {
+	new MuendlicheAntwortFrageBearbeitenDialog(null);
+    }*/
 }
