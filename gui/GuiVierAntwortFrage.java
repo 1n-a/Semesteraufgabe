@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class GuiVierAntwortFrage extends JFrame implements ActionListener {
+public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
 
     private char loesung;
 

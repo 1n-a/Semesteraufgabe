@@ -87,7 +87,16 @@ public class GuiNamen extends JFrame implements ActionListener {
         	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 2 darf nicht leer sein!");
         	} else {
             		this.dispose();
-            		new FilterDialog(new MehrspielerManager(), fieldName1.getText(), fieldName2.getText());
+            		new newFilterDialog(new MehrspielerManager(), fieldName1.getText(), fieldName2.getText());
+        	}
+            } else if (modus.equals("Buzzer")) {
+        	if (fieldName1.getText().length() < 1) {
+        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 1 darf nicht leer sein!");
+        	} else if (fieldName2.getText().length() < 1) {
+        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 2 darf nicht leer sein!");
+        	} else {
+            		this.dispose();
+            		new newFilterDialog(new BuzzermodusManager(), fieldName1.getText(), fieldName2.getText());
         	}
             }
             //hier Funktion einfÃ¼gen :D

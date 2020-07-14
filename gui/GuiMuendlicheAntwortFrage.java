@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.util.concurrent.Flow;
 
-public class GuiMuendlicheAntwortFrage extends JFrame implements ActionListener {
+public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListener {
 
     private String loesungText;
     private String frageText;

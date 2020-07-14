@@ -13,9 +13,10 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
+@SuppressWarnings("serial")
+public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
 
-    Timer timer;
+    Timer timer = new Timer(1000, null);
     int counter;
 
     private JButton buzzer1;
@@ -31,6 +32,16 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
     private JLabel name1;
     private JLabel name2;
     
+    private int maxFrage;
+    private String spieler1;
+    private String spieler2;
+    private int punkteSpieler1;
+    private int punkteSpieler2;
+    private JLabel anzeigePunkteSpieler1;
+    private JLabel anzeigePunkteSpieler2;
+    private JLabel anzeigeAktuelleFrage;
+    private int aktuelleFrage;
+    
     //private String audioTonZaehlen = ".\\src\\audioDateien\\tonZaehlen.mp3";
     private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen2.wav";
     private String tonEnde = ".\\src\\audioDateien\\tonEnde2.wav";
@@ -39,10 +50,17 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
     private Clip clipEnde = null;
     private AudioInputStream streamZaehlen = null;
     private AudioInputStream streamEnde = null;
+    
+    private boolean spieler1Gedrueckt = true;
+    
+    private BuzzermodusManager manager;
 
-    public GuiStatistikMpBuzzer(String title) {
+    public GuiStatistikMpBuzzer(String title, BuzzermodusManager manager) {
 
-        super(title);
+        super(new JFrame(), title, false);
+        
+        this.manager = manager;
+        
         this.setSize(300, 150);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
@@ -60,33 +78,31 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
         buzzer1 = new JButton("A");
         buzzer2 = new JButton("L");
 
-        //diese müssen noch ersetzt werden
-        String spieler1 = "Spieler 1";
-        String spieler2 = "Spieler 2";
+        spieler1 = "";
+        spieler2 = "";
         int punktzahl1 = 0;
-        int punktzahl2 = 1;
-        int aktuelleFrage = 1;
-        int maxFrage = 10;
+        int punktzahl2 = 0;
+        aktuelleFrage = 1;
 
         JLabel stringFrage = new JLabel("Frage ");
-        JLabel anzeigeAktuelleFrage = new JLabel(String.valueOf(aktuelleFrage));
+        anzeigeAktuelleFrage = new JLabel(String.valueOf(aktuelleFrage));
         JLabel trennerFrage = new JLabel(" / ");
         JLabel anzeigeMaxFrage = new JLabel(String.valueOf(maxFrage));
 
 
         name1 = new JLabel(spieler1);
         name2 = new JLabel(spieler2);
-        JLabel punkteSpieler1 = new JLabel(String.valueOf(punktzahl1));
+        anzeigePunkteSpieler1 = new JLabel(String.valueOf(punktzahl1));
         JLabel trennerPunkte = new JLabel(" : ");
-        JLabel punkteSpieler2 = new JLabel(String.valueOf(punktzahl2));
+        anzeigePunkteSpieler2 = new JLabel(String.valueOf(punktzahl2));
 
 
         framePunktzahl.add(buzzer1);
         framePunktzahl.add(name1);
         framePunktzahl.add(new JLabel("  "));
-        framePunktzahl.add(punkteSpieler1);
+        framePunktzahl.add(anzeigePunkteSpieler1);
         framePunktzahl.add(trennerPunkte);
-        framePunktzahl.add(punkteSpieler2);
+        framePunktzahl.add(anzeigePunkteSpieler2);
         framePunktzahl.add(new JLabel("  "));
         framePunktzahl.add(name2);
         framePunktzahl.add(buzzer2);
@@ -224,8 +240,15 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
                 }
             }
         });
+        this.setModal(true);
+        manager.disposeAktuelleFrage();
+        manager.next(0);
     }
 
+    public void modal(boolean mod) {
+	this.setModal(mod);
+    }
+    
     public void deactivateBuzzer() {
         buzzer1.setEnabled(false);
         buzzer2.setEnabled(false);
@@ -237,6 +260,7 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
     }
 
     public void resetCountdownAnzeige() {
+	timer.stop();
         bCountdown0.setBackground(Color.white);
         bCountdown1.setBackground(Color.white);
         bCountdown2.setBackground(Color.white);
@@ -261,17 +285,72 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if ((e.getKeyChar()) == 'a') {
             name1.setForeground(Color.yellow);
+            spieler1Gedrueckt = true;
+            this.setModal(false);
             System.out.println("a");
+            resetCountdownAnzeige();
+            startCountdown();
         } else if ((e.getKeyChar()) == 'l') {
             name2.setForeground(Color.yellow);
+            spieler1Gedrueckt = false;
+            this.setModal(false);
             System.out.println("l");
+            resetCountdownAnzeige();
+            startCountdown();
         }
-        resetCountdownAnzeige();
-        startCountdown();
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+    }
+    
+    public boolean getSpieler1Gedrueckt() {
+	return this.spieler1Gedrueckt;
+    }
+
+
+    public void setMaxFrage(int size) {
+	this.maxFrage = size;
+    }
+    
+    public void setNamen(String name1, String name2) {
+	this.spieler1 = name1;
+	this.spieler2 = name2;
+    }
+    
+    public int getPunkteSpieler1() {
+        return punkteSpieler1;
+    }
+
+    public void setPunkteSpieler1(int punkteSpieler1) {
+        this.punkteSpieler1 = punkteSpieler1;
+        this.anzeigePunkteSpieler1.setText(punkteSpieler1 + "");
+    }
+
+    public int getPunkteSpieler2() {
+        return punkteSpieler2;
+    }
+
+    public void setPunkteSpieler2(int punkteSpieler2) {
+        this.punkteSpieler2 = punkteSpieler2;
+        this.anzeigePunkteSpieler2.setText(punkteSpieler2 + "");
+    }
+    
+    public int getAktuelleFrage() {
+	return this.aktuelleFrage;
+    }
+    
+    public void setAktuelleFrage(int aktuelleFrage) {
+	this.aktuelleFrage = aktuelleFrage;
+	this.anzeigeAktuelleFrage.setText(aktuelleFrage + "");
+    }
+    
+    public String getName1() {
+	return this.spieler1;
+    }
+    
+    public String getName2() {
+	return this.spieler2;
     }
 
 }

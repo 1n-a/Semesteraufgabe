@@ -2,10 +2,10 @@ package gui;
 
 public class TestGui {
     public static void main(String[] args) {
-        //new Hauptmenue("Hauptmenue");
+        new Hauptmenue("Hauptmenue");
         //new GuiStatistikMpBuzzer("Punktzahl");
         //new GuiCardLayoutTest();
-        new newFilterDialog(new StandardspielManager());
+        //new newFilterDialog(new StandardspielManager());
         //new GuiStatistikStandard(("Punktzahl"));
         //new GuiStatistikMp(("Punktzahl"));
         //new GuiNamen("Namen");

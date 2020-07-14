@@ -1,5 +1,6 @@
 package gui;
 
+import controller.Frage;
 import controller.Fragencontainer;
 import controller.VorlesungenThemenContainer;
 
@@ -34,6 +35,8 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
     private JComboBox<String> cbVorlesungen;
 
     private SpielManager manager;
+   
+    private ArrayList<JCheckBox> themenBoxen = new ArrayList<>();
 
     public newFilterDialog(SpielManager manager) {
         super(new JDialog(), "Fragen filtern", true);
@@ -42,13 +45,11 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
         VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 
-        String[] stringThemen = {"Thema1", "Thema2", "Thema3"};
 
         cbVorlesungen = new JComboBox<>();
         cbVorlesungen.addActionListener(this);
 
         ArrayList<String> listVorlesungen = vtc.getVorlesungen();
-        ArrayList<JPanel> pnlVorlesungen = new ArrayList<>();
         ArrayList<ArrayList<JLabel>> sammlungThemenVls = new ArrayList<>();
 
 
@@ -87,7 +88,24 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
         JPanel south = new JPanel(new BorderLayout());
         JPanel navigation = new JPanel(new FlowLayout());
         south.add(navigation, BorderLayout.EAST);
-
+        
+        JPanel center = new JPanel(new BorderLayout());
+        center.add(new JLabel("Anzahl Fragen: "), BorderLayout.WEST);
+        int max = 0;
+        if (container.getFragen().size() > 15) {
+            max = 15;
+        } else {
+            max = container.getFragen().size();
+        }
+        anzahlFragen = new JScrollBar(JScrollBar.HORIZONTAL, 1, 0, 1, max);
+        //anzahlFragen.setMinimumSize(new Dimension(300, 10));
+        anzahlFragen.addAdjustmentListener(this);
+        center.add(anzahlFragen, BorderLayout.CENTER);
+        anzFra = new JLabel("1");
+        center.add(anzFra, BorderLayout.EAST);
+        south.add(center, BorderLayout.NORTH);
+        
+        
         btnOk = new JButton("OK");
         btnAbbrechen = new JButton("Abbrechen");
         navigation.add(btnOk);
@@ -102,48 +120,6 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
         setSize(600, 300);
         setVisible(true);
-
-
-        /*
-        JPanel north = new JPanel();
-        north.setLayout(new GridLayout(0, 2));
-        JLabel vorl = new JLabel("Vorlesungen (durch Semikolon getrennt): ");
-        north.add(vorl);
-        vorlesungen = new JTextField();
-        north.add(vorlesungen);
-        JLabel them = new JLabel("Themen (durch Semikolon getrennt): ");
-        north.add(them);
-        themen = new JTextField();
-        north.add(themen);
-
-        this.setLayout(new BorderLayout());
-        this.add(north, BorderLayout.NORTH);
-
-        JPanel center = new JPanel();
-        center.setLayout(new GridLayout(0, 3));
-        center.add(new JLabel("Anzahl Fragen: "));
-        anzahlFragen = new JScrollBar(JScrollBar.HORIZONTAL, 1, 0, 1, container.getFragen().size());
-        anzahlFragen.addAdjustmentListener(this);
-        center.add(anzahlFragen);
-        anzFra = new JLabel("1");
-        center.add(anzFra);
-        this.add(center, BorderLayout.CENTER);
-
-        JPanel south = new JPanel();
-        south.setLayout(new FlowLayout());
-        ok = new JButton("OK");
-        ok.addActionListener(this);
-        abbrechen = new JButton("Abbrechen");
-        abbrechen.addActionListener(this);
-        south.add(ok);
-        south.add(abbrechen);
-
-        this.add(south, BorderLayout.SOUTH);
-
-        this.pack();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-        */
     }
 
     public newFilterDialog(SpielManager manager, String name1, String name2) {
@@ -154,34 +130,18 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnOk) {
-            String[] vorlArray = this.vorlesungen.getText().split("\\;");
-            ArrayList<String> vorlesungen = new ArrayList<String>();
-            for (String s : vorlArray) {
-                if (s.length() > 0) {
-                    vorlesungen.add(s);
-                }
-            }
-            if (vorlesungen.size() == 0) {
-                vorlesungen = null;
-            }
-            String[] themArray = this.themen.getText().split("\\;");
-            ArrayList<String> themen = new ArrayList<String>();
-            for (String s : themArray) {
-                if (s.length() > 0) {
-                    themen.add(s);
-                }
-            }
-            if (themen.size() == 0) {
-                themen = null;
-            }
-            /*
             int anzahlFragen = this.anzahlFragen.getValue();
-            ArrayList<Frage> fragen = container.getFragenGefiltert(vorlesungen, themen, anzahlFragen);
+            ArrayList<String> stringThemen = new ArrayList<>();
+            for (JCheckBox j : themenBoxen) {
+        	stringThemen.add(j.getActionCommand());
+            }
+            ArrayList<String> stringVorlesungen = new ArrayList<>();
+            stringVorlesungen.add((String) cbVorlesungen.getSelectedItem()); 
+            ArrayList<Frage> fragen = container.getFragenGefiltert(stringVorlesungen, stringThemen, anzahlFragen);
             manager.setFragen(fragen);
             manager.init(fragen.size());
             manager.next(0);
             this.dispose();
-            */
         } else if (e.getSource() == btnAbbrechen) {
             this.dispose();
             new Hauptmenue("Hauptmenue");
@@ -189,6 +149,13 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
             int index = cbVorlesungen.getSelectedIndex();
             System.out.println(index);
             cardLayout.show(pnlMain, Integer.toString(index));
+        } else if (e.getSource() instanceof JCheckBox) {
+            JCheckBox box = (JCheckBox) e.getSource();
+            if (box.isSelected()) {
+        	themenBoxen.add(box);
+            } else {
+        	themenBoxen.remove(box);
+            }
         }
     }
 

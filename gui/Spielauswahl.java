@@ -49,6 +49,7 @@ public class Spielauswahl extends JFrame implements ActionListener {
         this.add(south, BorderLayout.SOUTH);
         this.standard.addActionListener(this);
         this.abwechselnd.addActionListener(this);
+        this.duell.addActionListener(this);
 
         setVisible(true);
     }
@@ -62,10 +63,13 @@ public class Spielauswahl extends JFrame implements ActionListener {
             dispose();
         } else if (e.getSource() == this.standard) {
             dispose();
-            new FilterDialog(new StandardspielManager());
+            new newFilterDialog(new StandardspielManager());
         } else if (e.getSource() == this.abwechselnd) {
             dispose();
             new GuiNamen("Namen eingeben", "Mp");
+        } else if (e.getSource() == this.duell) {
+            dispose();
+            new GuiNamen("Namen eingeben", "Buzzer");
         }
     }
 }
