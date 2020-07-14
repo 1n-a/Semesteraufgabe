@@ -236,6 +236,22 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
         buzzer2.setEnabled(true);
     }
 
+    public void resetCountdownAnzeige() {
+        bCountdown0.setBackground(Color.white);
+        bCountdown1.setBackground(Color.white);
+        bCountdown2.setBackground(Color.white);
+        bCountdown3.setBackground(Color.white);
+        bCountdown4.setBackground(Color.white);
+        bCountdown5.setBackground(Color.white);
+        counter = 6;
+    }
+
+    public void startCountdown () {
+        deactivateBuzzer();
+        countdown();
+        timer.start();
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
     }
@@ -250,16 +266,8 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
             name2.setForeground(Color.yellow);
             System.out.println("l");
         }
-        bCountdown0.setBackground(Color.white);
-        bCountdown1.setBackground(Color.white);
-        bCountdown2.setBackground(Color.white);
-        bCountdown3.setBackground(Color.white);
-        bCountdown4.setBackground(Color.white);
-        bCountdown5.setBackground(Color.white);
-        counter = 6;
-        deactivateBuzzer();
-        countdown();
-        timer.start();
+        resetCountdownAnzeige();
+        startCountdown();
     }
 
     @Override
