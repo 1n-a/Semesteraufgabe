@@ -31,7 +31,7 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
     private JLabel name1;
     private JLabel name2;
 
-    private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen_neu.wav";
+    private String tonZaehlen = ".\\src\\audioDateien\\drumstick.wav";
     private String tonEnde = ".\\src\\audioDateien\\tonEnde_neu.wav";
     private Clip clipZaehlen = null;
     private Clip clipEnde = null;
