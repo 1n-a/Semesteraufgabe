@@ -21,17 +21,17 @@ public class BuzzermodusManager extends SpielManager {
     public void next(int anzahlPunkte) {
 	statistik.setVisible(true);
 	statistik.resetCountdownAnzeige();
-	statistik.setModal(true);
+	//statistik.setModal(true);
 	statistik.activateBuzzer();
 	if (anzahlPunkte == -1) {
 	    statistik.dispose();
 	    return;
 	}
 	if (statistik.getSpieler1Gedrueckt()) {
-	    statistik.setPunkteSpieler1(statistik.getPunkteSpieler2() + anzahlPunkte);
+	    statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + anzahlPunkte);
 	    
 	} else {
-	    statistik.setPunkteSpieler2(statistik.getPunkteSpieler1() + anzahlPunkte);
+	    statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + anzahlPunkte);
 	}
 	if (fragen.size() == 0) {
 	    if (statistik.getPunkteSpieler1() > statistik.getPunkteSpieler2()) {

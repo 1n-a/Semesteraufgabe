@@ -3,6 +3,7 @@ package gui;
 public class TestGui {
     public static void main(String[] args) {
         new Hauptmenue("Hauptmenue");
+	//new GuiStatistikMpBuzzer("Hallo", null);
         //new GuiStatistikMpBuzzer("Punktzahl");
         //new GuiCardLayoutTest();
         //new newFilterDialog(new StandardspielManager());

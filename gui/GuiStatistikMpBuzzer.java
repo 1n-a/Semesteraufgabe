@@ -3,14 +3,12 @@ package gui;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
 
 
 @SuppressWarnings("serial")
@@ -41,11 +39,10 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
     private JLabel anzeigePunkteSpieler2;
     private JLabel anzeigeAktuelleFrage;
     private int aktuelleFrage;
+    private JLabel anzeigeMaxFrage;
     
-    //private String audioTonZaehlen = ".\\src\\audioDateien\\tonZaehlen.mp3";
     private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen2.wav";
     private String tonEnde = ".\\src\\audioDateien\\tonEnde2.wav";
-    //private String audioTonEnde = ".\\src\\audioDateien\\tonEnde.mp3";
     private Clip clipZaehlen = null;
     private Clip clipEnde = null;
     private AudioInputStream streamZaehlen = null;
@@ -82,12 +79,12 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         spieler2 = "";
         int punktzahl1 = 0;
         int punktzahl2 = 0;
-        aktuelleFrage = 1;
+        aktuelleFrage = 0;
 
         JLabel stringFrage = new JLabel("Frage ");
         anzeigeAktuelleFrage = new JLabel(String.valueOf(aktuelleFrage));
         JLabel trennerFrage = new JLabel(" / ");
-        JLabel anzeigeMaxFrage = new JLabel(String.valueOf(maxFrage));
+        anzeigeMaxFrage = new JLabel(String.valueOf(maxFrage));
 
 
         name1 = new JLabel(spieler1);
@@ -240,13 +237,9 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
                 }
             }
         });
-        this.setModal(true);
+        /*this.setModal(true);
         manager.disposeAktuelleFrage();
-        manager.next(0);
-    }
-
-    public void modal(boolean mod) {
-	this.setModal(mod);
+        manager.next(0);*/
     }
     
     public void deactivateBuzzer() {
@@ -285,15 +278,15 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if ((e.getKeyChar()) == 'a') {
             name1.setForeground(Color.yellow);
+            name2.setForeground(Color.black);
             spieler1Gedrueckt = true;
-            this.setModal(false);
             System.out.println("a");
             resetCountdownAnzeige();
             startCountdown();
         } else if ((e.getKeyChar()) == 'l') {
             name2.setForeground(Color.yellow);
+            name1.setForeground(Color.black);
             spieler1Gedrueckt = false;
-            this.setModal(false);
             System.out.println("l");
             resetCountdownAnzeige();
             startCountdown();
@@ -311,11 +304,14 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
 
     public void setMaxFrage(int size) {
 	this.maxFrage = size;
+	this.anzeigeMaxFrage.setText(size + "");
     }
     
     public void setNamen(String name1, String name2) {
 	this.spieler1 = name1;
+	this.name1.setText(name1);
 	this.spieler2 = name2;
+	this.name2.setText(name2);
     }
     
     public int getPunkteSpieler1() {
