@@ -10,6 +10,7 @@ public class BuzzermodusManager extends SpielManager {
 
     private GuiStatistikMpBuzzer statistik;
     private GuiFrage aktuelleFrage;
+    private boolean zeitUm = false;
     
     public BuzzermodusManager() {
 	statistik = new GuiStatistikMpBuzzer("Statistik", this);
@@ -27,11 +28,15 @@ public class BuzzermodusManager extends SpielManager {
 	    statistik.dispose();
 	    return;
 	}
-	if (statistik.getSpieler1Gedrueckt()) {
-	    statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + anzahlPunkte);
-	    
+	if (zeitUm) {
+	    JOptionPane.showMessageDialog(null, "Die Zeit ist um!");
+	    zeitUm = false;
 	} else {
-	    statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + anzahlPunkte);
+	    if (statistik.getSpieler1Gedrueckt()) {
+		statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + anzahlPunkte);    
+	    } else {
+		statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + anzahlPunkte);
+	    }
 	}
 	if (fragen.size() == 0) {
 	    if (statistik.getPunkteSpieler1() > statistik.getPunkteSpieler2()) {
@@ -49,9 +54,11 @@ public class BuzzermodusManager extends SpielManager {
 	Frage f = fragen.remove(0);
 	if (f instanceof VierAntwortenFrage) {
 	    GuiFrage fr = new GuiVierAntwortFrage((VierAntwortenFrage) f, this);
+	    fr.setEnabled(false);
 	    this.aktuelleFrage = fr;
 	} else if (f instanceof MuendlicheAntwortFrage) {
 	    GuiFrage fr = new GuiMuendlicheAntwortFrage((MuendlicheAntwortFrage) f, this);
+	    fr.setEnabled(false);
 	    this.aktuelleFrage = fr;
 	}
     }
@@ -68,6 +75,14 @@ public class BuzzermodusManager extends SpielManager {
     
     public void disposeAktuelleFrage() {
 	aktuelleFrage.dispose();
+    }
+    
+    public void enableFragenGui() {
+	this.aktuelleFrage.setEnabled(true);
+    }
+    
+    public void setZeitUm(boolean zeitUm) {
+	this.zeitUm = zeitUm;
     }
 
 }

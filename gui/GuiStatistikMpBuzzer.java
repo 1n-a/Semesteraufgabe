@@ -19,6 +19,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
 
     private JButton buzzer1;
     private JButton buzzer2;
+    private JButton aktivieren;
 
     private JButton bCountdown0 = new JButton("0");
     private JButton bCountdown1 = new JButton("1");
@@ -63,7 +64,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(4, 1));
 
         JPanel frameFrage = new JPanel(new FlowLayout());
         frameFrage.setBackground(officialColor);
@@ -115,13 +116,20 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         frameCountdown.add(bCountdown2);
         frameCountdown.add(bCountdown1);
         frameCountdown.add(bCountdown0);
-
+        
+        JPanel buzzer = new JPanel();
+        aktivieren = new JButton("Buzzer aktivieren");
+        buzzer.add(aktivieren);
+        buzzer.setBackground(officialColor);
+        
+        this.add(buzzer);
         this.add(framePunktzahl);
         this.add(frameFrage);
         this.add(frameCountdown);
 
-        buzzer1.addKeyListener(this);
+        aktivieren.addKeyListener(this);
 
+        pack();
         setVisible(true);
     }
 
@@ -204,6 +212,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
                     bCountdown3.setBackground(Color.red);
                     bCountdown4.setBackground(Color.red);
                     bCountdown5.setBackground(Color.red);
+                    manager.setZeitUm(true);
                     timer.stop();
                     activateBuzzer();
                     try {
@@ -237,9 +246,6 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
                 }
             }
         });
-        /*this.setModal(true);
-        manager.disposeAktuelleFrage();
-        manager.next(0);*/
     }
     
     public void deactivateBuzzer() {
@@ -280,6 +286,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
             name1.setForeground(Color.yellow);
             name2.setForeground(Color.black);
             spieler1Gedrueckt = true;
+            manager.enableFragenGui();
             System.out.println("a");
             resetCountdownAnzeige();
             startCountdown();
@@ -287,6 +294,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
             name2.setForeground(Color.yellow);
             name1.setForeground(Color.black);
             spieler1Gedrueckt = false;
+            manager.enableFragenGui();
             System.out.println("l");
             resetCountdownAnzeige();
             startCountdown();
