@@ -30,11 +30,9 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
 
     private JLabel name1;
     private JLabel name2;
-    
-    //private String audioTonZaehlen = ".\\src\\audioDateien\\tonZaehlen.mp3";
-    private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen2.wav";
-    private String tonEnde = ".\\src\\audioDateien\\tonEnde2.wav";
-    //private String audioTonEnde = ".\\src\\audioDateien\\tonEnde.mp3";
+
+    private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen_neu.wav";
+    private String tonEnde = ".\\src\\audioDateien\\tonEnde_neu.wav";
     private Clip clipZaehlen = null;
     private Clip clipEnde = null;
     private AudioInputStream streamZaehlen = null;
@@ -192,7 +190,6 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener {
                     bCountdown4.setBackground(Color.red);
                     bCountdown5.setBackground(Color.red);
                     timer.stop();
-                    activateBuzzer();
                     try {
                 	if (clipZaehlen != null) {
                 	    clipZaehlen.close();
