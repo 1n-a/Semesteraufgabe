@@ -156,6 +156,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch3.setBackground(Color.red);
             }
             deactivateAnswers();
+            manager.stopCountdown();
         } else if (e.getSource() == buttonB) {
             if (loesung == 'b') {
                 richtig = true;
@@ -167,6 +168,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch3.setBackground(Color.red);
             }
             deactivateAnswers();
+            manager.stopCountdown();
         } else if (e.getSource() == buttonC) {
             if (loesung == 'c') {
                 richtig = true;
@@ -178,6 +180,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch3.setBackground(Color.red);
             }
             deactivateAnswers();
+            manager.stopCountdown();
         } else if (e.getSource() == buttonD) {
             if (loesung == 'd') {
                 richtig = true;
@@ -189,6 +192,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch3.setBackground(Color.red);
             }
             deactivateAnswers();
+            manager.stopCountdown();
         }
     }
 

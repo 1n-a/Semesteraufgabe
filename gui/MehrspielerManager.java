@@ -66,4 +66,9 @@ public class MehrspielerManager extends SpielManager {
 	statistik.setVisible(true);
     }
 
+    @Override
+    public void stopCountdown() {
+	// macht nichts ;)
+    }
+
 }

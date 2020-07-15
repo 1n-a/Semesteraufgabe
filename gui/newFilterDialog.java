@@ -119,6 +119,7 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
 
         setSize(600, 300);
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 

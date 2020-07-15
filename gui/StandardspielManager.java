@@ -47,4 +47,9 @@ public class StandardspielManager extends SpielManager {
     public void setNamen(String name1, String name2) {
 	// hier unnötige Methode
     }
+
+    @Override
+    public void stopCountdown() {
+	//macht nichts
+    }
 }

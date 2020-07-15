@@ -34,8 +34,8 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
     private int maxFrage;
     private String spieler1;
     private String spieler2;
-    private int punkteSpieler1;
-    private int punkteSpieler2;
+    private int punkteSpieler1 = 0;
+    private int punkteSpieler2 = -1;
     private JLabel anzeigePunkteSpieler1;
     private JLabel anzeigePunkteSpieler2;
     private JLabel anzeigeAktuelleFrage;
@@ -79,7 +79,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         spieler1 = "";
         spieler2 = "";
         int punktzahl1 = 0;
-        int punktzahl2 = 0;
+        int punktzahl2 = -1;
         aktuelleFrage = 0;
 
         JLabel stringFrage = new JLabel("Frage ");

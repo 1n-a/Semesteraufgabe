@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.util.concurrent.Flow;
 
+@SuppressWarnings("serial")
 public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListener {
 
     private String loesungText;
@@ -124,11 +125,13 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
             nein.setEnabled(false);
             weiter.setVisible(true);
             richtig = true;
+            manager.stopCountdown();
         } else if(e.getSource() == nein) {
             nein.setBackground(Color.red);
             ja.setEnabled(false);
             nein.setEnabled(false);
             weiter.setVisible(true);
+            manager.stopCountdown();
         } else if(e.getSource() == weiter) {
             if (richtig) {
         	manager.next(1);

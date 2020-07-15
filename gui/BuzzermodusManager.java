@@ -33,9 +33,17 @@ public class BuzzermodusManager extends SpielManager {
 	    zeitUm = false;
 	} else {
 	    if (statistik.getSpieler1Gedrueckt()) {
-		statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + anzahlPunkte);    
+		if (anzahlPunkte == 0) {
+		    statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + 1);
+		} else {
+		    statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + anzahlPunkte); 
+		}   
 	    } else {
-		statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + anzahlPunkte);
+		if (anzahlPunkte == 0) {
+		    statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + 1);
+		} else {
+		    statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + anzahlPunkte);
+		}
 	    }
 	}
 	if (fragen.size() == 0) {
@@ -83,6 +91,12 @@ public class BuzzermodusManager extends SpielManager {
     
     public void setZeitUm(boolean zeitUm) {
 	this.zeitUm = zeitUm;
+    }
+    
+    public void stopCountdown() {
+	if (!zeitUm) {
+	    statistik.resetCountdownAnzeige();
+	}
     }
 
 }
