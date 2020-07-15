@@ -138,7 +138,7 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 			this.falscheAntwort3.getText());
 		container.linkFrage(frage);
 		container.unlinkFrage(alteFrage);
-		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugefügt.");
+		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugefuegt.");
 		this.dispose();
 	    }
 	} else if (e.getSource().equals(abbrechen)) {

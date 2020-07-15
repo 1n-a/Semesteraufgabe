@@ -25,6 +25,6 @@ MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorienti
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung ISP?$Interface Segregation Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung DIP?$Dependency Inversion Principle
 VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender Ausdruck in C? (x < y) ? x : y$das Minimum von x und y$y$x$das Maximum von x und y
-MuendlicheAntwortFrage$Informatik 2$Informatik 2$Wofuer steht die Abkuerzung SRP?$Single Responsibility Principle
-MuendlicheAntwortFrage$Informatik 2$Informatik 2$Wird von abstrakten Klassen oder Interfaces geerbt? Welches Schluesselwort wird dafuer verwendet?$von abstrakten Klassen mit extends
 VierAntwortenFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Welche Abkuerzung steht nicht fuer ein SOLID-Prinzip?$IDP$OCP$SRP$LSP
+MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung SRP?$Single Responsibility Principle
+MuendlicheAntwortFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Wird von abstrakten Klassen oder Interfaces geerbt? Welches Schluesselwort wird dafuer verwendet?$von abstrakten Klassen mit extends
