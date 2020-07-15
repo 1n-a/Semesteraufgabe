@@ -29,7 +29,12 @@ public class BuzzermodusManager extends SpielManager {
 	    return;
 	}
 	if (zeitUm) {
-	    JOptionPane.showMessageDialog(null, "Die Zeit ist um!");
+	    JOptionPane.showMessageDialog(null, "Die Zeit ist schon um!");
+	    if (statistik.getSpieler1Gedrueckt()) {
+		statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + 1);
+	    } else {
+		statistik.setPunkteSpieler1(statistik.getPunkteSpieler1() + 1);
+	    }
 	    zeitUm = false;
 	} else {
 	    if (statistik.getSpieler1Gedrueckt()) {
