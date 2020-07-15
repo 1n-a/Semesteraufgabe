@@ -2,7 +2,6 @@ VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Wofuer steht die Abkuerzung R
 VierAntwortenFrage$Informatik 2$Java-Programmstruktur$Welcher Methodenkopf einer Mainmethode ist nicht richtig?$public static void main(string args)$public static void main(String args[])$public static void main(String... args)$public static void main(String[] args)
 VierAntwortenFrage$Informatik 1$Rechnerarchitektur$Welche der folgenden Aussagen stimmt nicht?$Keine Aussage stimmt.$In Registern ist der Preis pro Bit hoch.$Im Arbeitsspeicher ist die Zugriffszeit hoch.$Die Kapazitaet in Cache ist groesser als in den Registern.
 VierAntwortenFrage$Informatik 1$Codierung reeller Zahlen$Welche Zahl wird in der Gleitkommacodierung reeller Zahlen durch folgendes Bitmuster dargestellt? 11...10...0$- unendlich$+ unendlich$0$1/0
-VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender Ausdruck in C? (x < y) ? x : y$x$y$das Minimum von x und y$das Maximum von x und y
 MuendlicheAntwortFrage$Informatik 1$einfache C-Programme$Durch welchen Ausdruck kann der C-Ausdruck v %= A ersetzt werden?$v = v % A
 VierAntwortenFrage$Informatik 1$Codierung reeller Zahlen$Betrachte folgenden Code in C. Welche Werte haben m und k?\nint n = 0\nint m = ++n; \nint k = n--;$m = 1, k = 1$m = 0, k = 0$m = 1, k = 0$m = 0, k = 1
 VierAntwortenFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Welchen Wertebereich hat der Datentyp boolean in Java?$true, false$true, false, unknown$0, 1$alle positiven ganzen Zahlen
@@ -28,3 +27,4 @@ MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorienti
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung LSP?$Liskov Substitution Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung ISP?$Interface Segregation Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung DIP?$Dependency Inversion Principle
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender Ausdruck in C? (x < y) ? x : y$das Minimum von x und y$y$x$das Maximum von x und y

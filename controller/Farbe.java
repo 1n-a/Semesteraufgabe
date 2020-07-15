@@ -2,9 +2,9 @@ package controller;
 
 public enum Farbe {
 
-    dunkelLila(75, 58, 132), 
+    dunkelLila(191, 62, 255), 
     gelb(255, 173, 0), 
-    schwarz(0, 0, 0), 
+    schwarz(0, 255, 255), 
     weiss(255, 255, 255),
     grau(142, 142, 142),
     pink(255, 0, 255);
