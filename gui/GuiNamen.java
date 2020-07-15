@@ -1,7 +1,6 @@
 package gui;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,18 +81,18 @@ public class GuiNamen extends JFrame implements ActionListener {
         	//TODO: Fehler, falls Name leer
         	//System.out.println(fieldName1.getText() + " " + fieldName2.getText());
         	if (fieldName1.getText().length() < 1) {
-        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 1 darf nicht leer sein!");
+        	    JOptionPane.showMessageDialog(null, "Der Name fï¿½r Spieler 1 darf nicht leer sein!");
         	} else if (fieldName2.getText().length() < 1) {
-        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 2 darf nicht leer sein!");
+        	    JOptionPane.showMessageDialog(null, "Der Name fï¿½r Spieler 2 darf nicht leer sein!");
         	} else {
             		this.dispose();
             		new newFilterDialog(new MehrspielerManager(), fieldName1.getText(), fieldName2.getText());
         	}
             } else if (modus.equals("Buzzer")) {
         	if (fieldName1.getText().length() < 1) {
-        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 1 darf nicht leer sein!");
+        	    JOptionPane.showMessageDialog(null, "Der Name fï¿½r Spieler 1 darf nicht leer sein!");
         	} else if (fieldName2.getText().length() < 1) {
-        	    JOptionPane.showMessageDialog(null, "Der Name für Spieler 2 darf nicht leer sein!");
+        	    JOptionPane.showMessageDialog(null, "Der Name fï¿½r Spieler 2 darf nicht leer sein!");
         	} else {
             		this.dispose();
             		new newFilterDialog(new BuzzermodusManager(), fieldName1.getText(), fieldName2.getText());

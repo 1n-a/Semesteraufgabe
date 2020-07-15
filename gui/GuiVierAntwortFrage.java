@@ -32,18 +32,22 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
     private JButton weiter = new JButton("naechste Frage");
     private JButton exit = new JButton("Ende");
     private SpielManager manager;
+
     private boolean richtig = false;
+    private boolean antwortGegeben = false;
 
 
 
     public GuiVierAntwortFrage(String title, String frageText, String aRichtig, String aFalsch1, String aFalsch2, String aFalsch3) {
 
         super(title);
+        setAntwortGegeben(false);
         this.setSize(500, 300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DO_NOTHING_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
+
 
         buttonA = new JButton("A");
         buttonA.setSize(new Dimension(10, 10));
@@ -155,8 +159,8 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch2.setBackground(Color.red);
                 feldAFalsch3.setBackground(Color.red);
             }
+            setAntwortGegeben(true);
             deactivateAnswers();
-            manager.stopCountdown();
         } else if (e.getSource() == buttonB) {
             if (loesung == 'b') {
                 richtig = true;
@@ -167,8 +171,8 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch2.setBackground(Color.red);
                 feldAFalsch3.setBackground(Color.red);
             }
+            setAntwortGegeben(true);
             deactivateAnswers();
-            manager.stopCountdown();
         } else if (e.getSource() == buttonC) {
             if (loesung == 'c') {
                 richtig = true;
@@ -179,8 +183,8 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch2.setBackground(Color.red);
                 feldAFalsch3.setBackground(Color.red);
             }
+            setAntwortGegeben(true);
             deactivateAnswers();
-            manager.stopCountdown();
         } else if (e.getSource() == buttonD) {
             if (loesung == 'd') {
                 richtig = true;
@@ -191,8 +195,8 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
                 feldAFalsch2.setBackground(Color.red);
                 feldAFalsch3.setBackground(Color.red);
             }
+            setAntwortGegeben(true);
             deactivateAnswers();
-            manager.stopCountdown();
         }
     }
 
@@ -204,10 +208,39 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
         weiter.setVisible(true);
     }
 
+    public void activateAnswers() {
+        buttonA.setEnabled(true);
+        buttonB.setEnabled(true);
+        buttonC.setEnabled(true);
+        buttonD.setEnabled(true);
+    }
+
     private void feldEigenschaftenSetzen(JTextArea textArea) {
         textArea.setEnabled(false);
         textArea.setDisabledTextColor(Color.black);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
+    }
+
+    @Override
+    public void showAnswer() {
+        richtig = false;
+        feldARichtig.setBackground(Color.green);
+        feldAFalsch1.setBackground(Color.red);
+        feldAFalsch2.setBackground(Color.red);
+        feldAFalsch3.setBackground(Color.red);
+        deactivateAnswers();
+    }
+
+    public void setAntwortGegeben (boolean wert) {
+        antwortGegeben = wert;
+    }
+
+    public boolean getAntwortGegeben () {
+        return antwortGegeben;
+    }
+
+    public void weiterInvisible() {
+        weiter.setVisible(false);
     }
 }

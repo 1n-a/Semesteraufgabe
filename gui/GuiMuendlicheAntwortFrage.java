@@ -31,16 +31,17 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
     
     private SpielManager manager;
     private boolean richtig = false;
+    private boolean antwortGegeben = false;
 
     public GuiMuendlicheAntwortFrage(String title, String frageT, String loesungT) {
 
         super(title);
+        setAntwortGegeben(false);
         this.setSize(500, 300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DO_NOTHING_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
-
 
         frageText = frageT;
         loesungText = loesungT;
@@ -48,7 +49,8 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
 
         frageFeld = new JTextArea(frageText,12, 20);
         JScrollPane scrollFrageFeld = new JScrollPane(frageFeld);
-        frageFeld.setEnabled(true);
+        frageFeld.setEnabled(false);
+        frageFeld.setDisabledTextColor(Color.black);
         frageFeld.setLineWrap(true);
         frageFeld.setWrapStyleWord(true);
 
@@ -110,6 +112,7 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
             dispose();
         } else if(e.getSource() == loesung) {
             frageFeld.replaceRange(loesungText, 0, frageText.length());
+            setAntwortGegeben(true);
             loesung.setVisible(false);
             richtigeAntwort.setVisible(true);
             ja.setVisible(true);
@@ -125,13 +128,11 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
             nein.setEnabled(false);
             weiter.setVisible(true);
             richtig = true;
-            manager.stopCountdown();
         } else if(e.getSource() == nein) {
             nein.setBackground(Color.red);
             ja.setEnabled(false);
             nein.setEnabled(false);
             weiter.setVisible(true);
-            manager.stopCountdown();
         } else if(e.getSource() == weiter) {
             if (richtig) {
         	manager.next(1);
@@ -140,5 +141,39 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
             }
             this.dispose();
         }
+    }
+
+    @Override
+    public void showAnswer() {
+        frageFeld.replaceRange(loesungText, 0, frageText.length());
+        loesung.setVisible(false);
+        richtigeAntwort.setVisible(true);
+        ja.setVisible(true);
+        nein.setVisible(true);
+        setVisible(true);
+        nein.setBackground(Color.red);
+        ja.setEnabled(false);
+        nein.setEnabled(false);
+        weiter.setVisible(true);
+    }
+
+    public void setAntwortGegeben (boolean wert) {
+        antwortGegeben = wert;
+    }
+
+    public boolean getAntwortGegeben () {
+        return antwortGegeben;
+    }
+
+    public void deactivateAnswers() {
+        loesung.setEnabled(false);
+    }
+
+    public void activateAnswers() {
+        loesung.setEnabled(true);
+    }
+
+    public void weiterInvisible() {
+        weiter.setVisible(false);
     }
 }

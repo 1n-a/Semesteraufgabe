@@ -16,7 +16,5 @@ public abstract class SpielManager {
     public abstract void init(int anzahlFragen);
     
     public abstract void setNamen(String name1, String name2);
-    
-    public abstract void stopCountdown();
 
 }

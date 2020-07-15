@@ -9,18 +9,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.util.concurrent.Flow;
 
 
 @SuppressWarnings("serial")
-public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, ActionListener {
+public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionListener {
 
     Timer timer = new Timer(1000, null);
     int counter;
 
     private JButton buzzer1;
     private JButton buzzer2;
-    private JButton aktivieren;
-    private JButton ende;
+    private JButton ueberspringen;
 
     private JButton bCountdown0 = new JButton("0");
     private JButton bCountdown1 = new JButton("1");
@@ -43,20 +43,13 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
     private int aktuelleFrage;
     private JLabel anzeigeMaxFrage;
     
-    private String tonZaehlen = ".\\src\\audioDateien\\tonZaehlen2.wav";
-    private String tonEnde = ".\\src\\audioDateien\\tonEnde2.wav";
-    private Clip clipZaehlen = null;
-    private Clip clipEnde = null;
-    private AudioInputStream streamZaehlen = null;
-    private AudioInputStream streamEnde = null;
-    
     private boolean spieler1Gedrueckt = true;
     
     private BuzzermodusManager manager;
 
     public GuiStatistikMpBuzzer(String title, BuzzermodusManager manager) {
 
-        super(new JFrame(), title, false);
+        super(title);
         
         this.manager = manager;
         
@@ -73,9 +66,12 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
         framePunktzahl.setBackground(officialColor);
         JPanel frameCountdown = new JPanel(new FlowLayout());
         frameCountdown.setBackground((officialColor));
+        JPanel frameUeberspringen = new JPanel(new FlowLayout());
+        frameUeberspringen.setBackground((officialColor));
 
         buzzer1 = new JButton("A");
         buzzer2 = new JButton("L");
+        ueberspringen = new JButton("Frage ueberspringen");
 
         spieler1 = "";
         spieler2 = "";
@@ -97,6 +93,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
 
 
         framePunktzahl.add(buzzer1);
+        buzzer1.addKeyListener(this);
         framePunktzahl.add(name1);
         framePunktzahl.add(new JLabel("  "));
         framePunktzahl.add(anzeigePunkteSpieler1);
@@ -117,174 +114,84 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
         frameCountdown.add(bCountdown2);
         frameCountdown.add(bCountdown1);
         frameCountdown.add(bCountdown0);
-        
-        JPanel buzzer = new JPanel();
-        aktivieren = new JButton("Buzzer aktivieren");
-        buzzer.add(aktivieren);
-        buzzer.setBackground(officialColor);
-        
-        ende = new JButton("Ende");
-        ende.addActionListener(this);
-        
-        this.add(buzzer);
+
+        frameUeberspringen.add(ueberspringen);
+        ueberspringen.addActionListener(this);
+
         this.add(framePunktzahl);
         this.add(frameFrage);
         this.add(frameCountdown);
-        this.add(ende);
-
-        aktivieren.addKeyListener(this);
+        this.add(frameUeberspringen);
 
         pack();
         setVisible(true);
     }
 
 
-    public void countdown() {
-        timer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                counter--;
-                
-                try {
-        	    streamZaehlen = AudioSystem.getAudioInputStream(new File(tonZaehlen).getAbsoluteFile());
-        	    clipZaehlen = AudioSystem.getClip(); 
-        	    clipZaehlen.open(streamZaehlen);
-        	    streamEnde = AudioSystem.getAudioInputStream(new File(tonEnde).getAbsoluteFile());
-        	    clipEnde = AudioSystem.getClip();
-        	    clipEnde.open(streamEnde);
-        	} catch (Exception e1) {
-        	    e1.printStackTrace();
-        	}
-                
-                if(counter == 5) {
-                    bCountdown5.setBackground(Color.yellow);
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == 4) {
-                    bCountdown4.setBackground(Color.yellow);
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == 3) {
-                    bCountdown3.setBackground(Color.yellow);
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == 2) {
-                    bCountdown2.setBackground(Color.yellow);
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == 1) {
-                    bCountdown1.setBackground(Color.yellow);
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == 0) {
-                    bCountdown0.setBackground(Color.yellow);
-                    try {
-                	if (clipEnde != null) {
-                	    clipEnde.start();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                } else if(counter == -1) {
-                    bCountdown0.setBackground(Color.red);
-                    bCountdown1.setBackground(Color.red);
-                    bCountdown2.setBackground(Color.red);
-                    bCountdown3.setBackground(Color.red);
-                    bCountdown4.setBackground(Color.red);
-                    bCountdown5.setBackground(Color.red);
-                    manager.setZeitUm(true);
-                    timer.stop();
-                    activateBuzzer();
-                    try {
-                	if (clipZaehlen != null) {
-                	    clipZaehlen.close();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                    try {
-                	if (clipEnde != null) {
-                	    clipEnde.close();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                    try {
-                	if (streamZaehlen != null) {
-                	    streamZaehlen.close();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                    try {
-                	if (streamEnde != null) {
-                	    streamEnde.close();
-                	}
-                    } catch (Exception e2) {
-                	e2.printStackTrace();
-                    }
-                }
-            }
-        });
+    public void countdown5() {
+        bCountdown5.setBackground(Color.yellow);
     }
+
+    public void countdown4() {
+        bCountdown4.setBackground(Color.yellow);
+    }
+
+    public void countdown3() {
+        bCountdown3.setBackground(Color.yellow);
+    }
+
+    public void countdown2() {
+        bCountdown2.setBackground(Color.yellow);
+    }
+
+    public void countdown1() {
+        bCountdown1.setBackground(Color.yellow);
+    }
+
+    public void countdown0() {
+        bCountdown0.setBackground(Color.yellow);
+    }
+
+    public void countdownEnd() {
+        bCountdown0.setBackground(Color.red);
+        bCountdown1.setBackground(Color.red);
+        bCountdown2.setBackground(Color.red);
+        bCountdown3.setBackground(Color.red);
+        bCountdown4.setBackground(Color.red);
+        bCountdown5.setBackground(Color.red);
+    }
+
     
     public void deactivateBuzzer() {
         buzzer1.setEnabled(false);
         buzzer2.setEnabled(false);
+        ueberspringen.setEnabled(false);
     }
 
     public void activateBuzzer() {
         buzzer1.setEnabled(true);
         buzzer2.setEnabled(true);
+        ueberspringen.setEnabled(true);
     }
 
     public void resetCountdownAnzeige() {
-	timer.stop();
+	    timer.stop();
         bCountdown0.setBackground(Color.white);
         bCountdown1.setBackground(Color.white);
         bCountdown2.setBackground(Color.white);
         bCountdown3.setBackground(Color.white);
         bCountdown4.setBackground(Color.white);
         bCountdown5.setBackground(Color.white);
+        name1.setForeground(Color.black);
+        name2.setForeground(Color.black);
         counter = 6;
     }
 
-    public void startCountdown () {
-        deactivateBuzzer();
-        countdown();
-        timer.start();
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
-    //Funktion des KeyPressedEvents anpassen
     @Override
     public void keyPressed(KeyEvent e) {
         if ((e.getKeyChar()) == 'a') {
@@ -293,23 +200,21 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
             spieler1Gedrueckt = true;
             manager.enableFragenGui();
             System.out.println("a");
-            resetCountdownAnzeige();
-            startCountdown();
+            manager.buzzerP1Pressed();
         } else if ((e.getKeyChar()) == 'l') {
             name2.setForeground(Color.yellow);
             name1.setForeground(Color.black);
             spieler1Gedrueckt = false;
             manager.enableFragenGui();
             System.out.println("l");
-            resetCountdownAnzeige();
-            startCountdown();
+            manager.buzzerP2Pressed();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    
+
     public boolean getSpieler1Gedrueckt() {
 	return this.spieler1Gedrueckt;
     }
@@ -365,9 +270,13 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, Action
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	if (e.getActionCommand().equals("Ende")) {
-	    manager.stopSpiel();
-	}
+        if (e.getSource() == ueberspringen) {
+            manager.frageUeberspringen();
+        }
+    }
+
+    public void setFocusOnBuzzer() {
+        buzzer1.requestFocus();
     }
 
 }

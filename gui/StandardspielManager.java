@@ -48,8 +48,4 @@ public class StandardspielManager extends SpielManager {
 	// hier unnötige Methode
     }
 
-    @Override
-    public void stopCountdown() {
-	//macht nichts
-    }
 }

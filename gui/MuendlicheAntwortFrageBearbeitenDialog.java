@@ -39,24 +39,20 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	JPanel north = new JPanel();
 	north.setLayout(new FlowLayout());
 	JLabel vorl = new JLabel("Vorlesung: ");
-	vorl.setFont(GuiFarbauswahl.officialFont);
 	north.add(vorl);
 	for (String vorles : vtc.getVorlesungen()) {
 	    vorlesung.addItem(vorles);
 	}
 	vorlesung.addItem("eigene Vorlesung...");
 	vorlesung.setEditable(true);
-	vorlesung.setFont(GuiFarbauswahl.officialFont);
 	north.add(vorlesung);
 	JLabel them = new JLabel("Thema: ");
-	them.setFont(GuiFarbauswahl.officialFont);
 	north.add(them);
 	for (String the : vtc.getThemen()) {
 	    thema.addItem(the);
 	}
 	thema.addItem("eigenes Thema...");
 	thema.setEditable(true);
-	thema.setFont(GuiFarbauswahl.officialFont);
 	north.add(thema);
 	north.setBackground(GuiFarbauswahl.officialColor);
 	this.add(north, BorderLayout.NORTH);
@@ -64,26 +60,20 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	JPanel center = new JPanel();
 	center.setLayout(new GridLayout(2, 2));
 	JLabel fr = new JLabel("Frage: ");
-	fr.setFont(GuiFarbauswahl.officialFont);
 	center.add(fr);
 	center.add(this.frage);
-	this.frage.setFont(GuiFarbauswahl.officialFont);
 	JLabel antw = new JLabel("Antwort: ");
-	antw.setFont(GuiFarbauswahl.officialFont);
 	center.add(antw);
 	center.add(antwort);
-	antwort.setFont(GuiFarbauswahl.officialFont);
 	center.setBackground(GuiFarbauswahl.officialColor);
 	this.add(center, BorderLayout.CENTER);
 	
 	JPanel south = new JPanel();
 	south.setLayout(new FlowLayout());
 	ok = new JButton("OK");
-	ok.setFont(GuiFarbauswahl.officialFont);
 	ok.addActionListener(this);
 	south.add(ok);
 	abbrechen = new JButton("Abbrechen");
-	abbrechen.setFont(GuiFarbauswahl.officialFont);
 	abbrechen.addActionListener(this);
 	south.add(abbrechen);
 	south.setBackground(GuiFarbauswahl.officialColor);
@@ -116,7 +106,7 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 			(String) this.thema.getSelectedItem(), this.frage.getText(), this.antwort.getText());
 		container.linkFrage(frage);
 		container.unlinkFrage(alteFrage);
-		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugefügt.");
+		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugefï¿½gt.");
 		this.dispose();
 	    }
 	} else if (e.getSource().equals(abbrechen)) {

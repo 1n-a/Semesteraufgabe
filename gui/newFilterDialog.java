@@ -41,10 +41,10 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
     public newFilterDialog(SpielManager manager) {
         super(new JDialog(), "Fragen filtern", true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        Color officialColor = GuiFarbauswahl.officialColor;
         this.manager = manager;
 
         VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
-
 
         cbVorlesungen = new JComboBox<>();
         cbVorlesungen.addActionListener(this);
@@ -54,6 +54,7 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
 
         pnlMain = new JPanel();
+        pnlMain.setBackground(officialColor);
         cardLayout = new CardLayout();
         pnlMain.setLayout(cardLayout);
 
@@ -64,6 +65,7 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
             ArrayList<String> listThemen = vtc.getThemenZuVorlesung(listVorlesungen.get(i));
             JPanel neuesPanel = new JPanel();
+            neuesPanel.setBackground(officialColor);
 
             for(int j = 0; j < listThemen.size(); ++j) {
                 JCheckBox neuesThema = new JCheckBox(listThemen.get(j));
@@ -86,10 +88,13 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
         //GUI Navigation
         JPanel south = new JPanel(new BorderLayout());
+        south.setBackground(officialColor);
         JPanel navigation = new JPanel(new FlowLayout());
+        navigation.setBackground(officialColor);
         south.add(navigation, BorderLayout.EAST);
         
         JPanel center = new JPanel(new BorderLayout());
+        center.setBackground(officialColor);
         center.add(new JLabel("Anzahl Fragen: "), BorderLayout.WEST);
         int max = 0;
         if (container.getFragen().size() > 15) {
