@@ -12,7 +12,7 @@ import java.io.File;
 
 
 @SuppressWarnings("serial")
-public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
+public class GuiStatistikMpBuzzer extends JDialog implements KeyListener, ActionListener {
 
     Timer timer = new Timer(1000, null);
     int counter;
@@ -20,6 +20,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
     private JButton buzzer1;
     private JButton buzzer2;
     private JButton aktivieren;
+    private JButton ende;
 
     private JButton bCountdown0 = new JButton("0");
     private JButton bCountdown1 = new JButton("1");
@@ -64,7 +65,7 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
-        setLayout(new GridLayout(4, 1));
+        setLayout(new GridLayout(5, 1));
 
         JPanel frameFrage = new JPanel(new FlowLayout());
         frameFrage.setBackground(officialColor);
@@ -122,10 +123,14 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
         buzzer.add(aktivieren);
         buzzer.setBackground(officialColor);
         
+        ende = new JButton("Ende");
+        ende.addActionListener(this);
+        
         this.add(buzzer);
         this.add(framePunktzahl);
         this.add(frameFrage);
         this.add(frameCountdown);
+        this.add(ende);
 
         aktivieren.addKeyListener(this);
 
@@ -355,6 +360,14 @@ public class GuiStatistikMpBuzzer extends JDialog implements KeyListener {
     
     public String getName2() {
 	return this.spieler2;
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+	if (e.getActionCommand().equals("Ende")) {
+	    manager.stopSpiel();
+	}
     }
 
 }

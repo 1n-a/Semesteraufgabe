@@ -29,7 +29,7 @@ public class BuzzermodusManager extends SpielManager {
 	    return;
 	}
 	if (zeitUm) {
-	    JOptionPane.showMessageDialog(null, "Die Zeit ist schon um!");
+	    //JOptionPane.showMessageDialog(null, "Die Zeit ist schon um!");
 	    if (statistik.getSpieler1Gedrueckt()) {
 		statistik.setPunkteSpieler2(statistik.getPunkteSpieler2() + 1);
 	    } else {
@@ -96,12 +96,19 @@ public class BuzzermodusManager extends SpielManager {
     
     public void setZeitUm(boolean zeitUm) {
 	this.zeitUm = zeitUm;
+	JOptionPane.showMessageDialog(null, "Die Zeit ist um! Beantworte die Frage bitte trotzdem.");
     }
     
     public void stopCountdown() {
 	if (!zeitUm) {
 	    statistik.resetCountdownAnzeige();
 	}
+    }
+
+    public void stopSpiel() {
+	statistik.dispose();
+	aktuelleFrage.dispose();
+	new Hauptmenue("Hauptmenue");
     }
 
 }
