@@ -5,8 +5,7 @@
 
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -38,6 +37,7 @@ public class ListDialog extends JDialog implements ActionListener {
 	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	this.updateList();
 	JScrollPane sp = new JScrollPane(list);
+	sp.setPreferredSize(new Dimension(2000, 500));
 	this.setLayout(new BorderLayout());
 	this.add(sp, BorderLayout.NORTH);
 	
@@ -78,14 +78,14 @@ public class ListDialog extends JDialog implements ActionListener {
 	    this.updateList();
 	} else if (e.getSource().equals(bearbeiten)) {
 	    if (list.getSelectedValue() == null) {
-		JOptionPane.showMessageDialog(null, "Wähle zuerst die Frage aus, die du bearbeiten möchtest!");
+		JOptionPane.showMessageDialog(null, "Waehle zuerst die Frage aus, die du bearbeiten moechtest!");
 	    } else {
 		new BearbeiteDialog(list.getSelectedValue());
 		this.updateList();
 	    }
 	} else if (e.getSource().equals(loeschen)) {
 	    if (list.getSelectedValue() == null) {
-		JOptionPane.showMessageDialog(null, "Wähle zuerst die Frage aus, die du löschen möchtest!");
+		JOptionPane.showMessageDialog(null, "Waehle zuerst die Frage aus, die du loeschen moechtest!");
 	    } else {
 		container.unlinkFrage(list.getSelectedValue());
 		this.updateList();

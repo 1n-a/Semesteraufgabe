@@ -106,7 +106,7 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 			(String) this.thema.getSelectedItem(), this.frage.getText(), this.antwort.getText());
 		container.linkFrage(frage);
 		container.unlinkFrage(alteFrage);
-		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugef�gt.");
+		JOptionPane.showMessageDialog(null, "Die Frage wurde hinzugefuegt.");
 		this.dispose();
 	    }
 	} else if (e.getSource().equals(abbrechen)) {

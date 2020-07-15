@@ -19,10 +19,10 @@ public class HinzufuegeDialog extends JDialog implements ActionListener {
     JButton abbrechen;
     
     public HinzufuegeDialog(JDialog owner) {
-	super(owner, "Frage hinzufügen", true);
+	super(owner, "Frage hinzufuegen", true);
 	this.setLayout(new GridLayout(0, 1));
 	
-	JLabel frage = new JLabel("Was für eine Frage möchtest du hinzufügen?");
+	JLabel frage = new JLabel("Was fuer eine Frage moechtest du hinzufuegen?");
 	this.add(frage);
 	fragen = new JComboBox<String>();
 	fragen.addItem("VierAntwortenFrage");

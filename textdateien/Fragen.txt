@@ -17,14 +17,14 @@ MuendlicheAntwortFrage$Informatik 1$Informatik 1$Es sei x eine Variable vom Typ 
 MuendlicheAntwortFrage$Informatik 2$Informatik 2$Was versteht man unter ueberladenen Operationen?$Zwei Operationen nennt man ueberladen, wenn sie den gleichen Namen, aber eine unterschiedliche Parameterliste haben.
 VierAntwortenFrage$Informatik 2$UML-Klassendiagramm$Was ist keine Standardoperation, um Beziehungen zu modifizieren?$set-Operation$unlink-Operation$link-Operation$check-Operation
 MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Was versteht man unter einer mehrwertigen Assoziation?$Mehrwertige Assoziationen beschreiben Beziehungen zwischen Objekten von drei oder mehr verschieden Klassen.
-MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Was ist der graphische Unterschied zwischen einer Aggregation und einer Komposition in UML-Klassendiagrammen?$Bei der Komposition ist die Raute ausgefüllt, bei der Aggregation weiss.
+MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Was ist der graphische Unterschied zwischen einer Aggregation und einer Komposition in UML-Klassendiagrammen?$Bei der Komposition ist die Raute ausgefï¿½llt, bei der Aggregation weiss.
 MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Mit welchem Zeichen wird die Java-Sichtbarkeit protected in UML-Klassendiagrammen angegeben?$#
-MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Wird von abstrakten Klassen oder Interfaces geerbt? Welches Schlüsselwort wird dafuer verwendet?$von abstrakten Klassen mit extends
-MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Wie werden parametrisierte Klassen in UML-Klassendiagrammen dargestellt?$Der Parameter wird in einem gestrichelten Rechteck rechts oben an dem Klassenkästchen ergänzt.
-VierAntwortenFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Welche Abkürzung steht nicht für ein SOLID-Prinzip?$IDP$OCP$SRP$LSP
-MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofür steht die Abkuerzung SRP?$Single Responsibility Principle
+MuendlicheAntwortFrage$Informatik 2$UML-Klassendiagramm$Wie werden parametrisierte Klassen in UML-Klassendiagrammen dargestellt?$Der Parameter wird in einem gestrichelten Rechteck rechts oben an dem Klassenkï¿½stchen ergï¿½nzt.
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung OCP?$Open Closed Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung LSP?$Liskov Substitution Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung ISP?$Interface Segregation Principle
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung DIP?$Dependency Inversion Principle
 VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender Ausdruck in C? (x < y) ? x : y$das Minimum von x und y$y$x$das Maximum von x und y
+MuendlicheAntwortFrage$Informatik 2$Informatik 2$Wofuer steht die Abkuerzung SRP?$Single Responsibility Principle
+MuendlicheAntwortFrage$Informatik 2$Informatik 2$Wird von abstrakten Klassen oder Interfaces geerbt? Welches Schluesselwort wird dafuer verwendet?$von abstrakten Klassen mit extends
+VierAntwortenFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Welche Abkuerzung steht nicht fuer ein SOLID-Prinzip?$IDP$OCP$SRP$LSP
