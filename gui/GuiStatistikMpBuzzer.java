@@ -194,14 +194,14 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionL
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if ((e.getKeyChar()) == 'a') {
+        if ((e.getKeyChar()) == 'a' || e.getKeyChar() == 'A') {
             name1.setForeground(Color.yellow);
             name2.setForeground(Color.black);
             spieler1Gedrueckt = true;
             manager.enableFragenGui();
             //System.out.println("a");
             manager.buzzerP1Pressed();
-        } else if ((e.getKeyChar()) == 'l') {
+        } else if ((e.getKeyChar()) == 'l' || e.getKeyChar() == 'L') {
             name2.setForeground(Color.yellow);
             name1.setForeground(Color.black);
             spieler1Gedrueckt = false;

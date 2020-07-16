@@ -97,8 +97,8 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
         center.setBackground(officialColor);
         center.add(new JLabel("Anzahl Fragen: "), BorderLayout.WEST);
         int max = 0;
-        if (container.getFragen().size() > 15) {
-            max = 15;
+        if (container.getFragen().size() > 20) {
+            max = 20;
         } else {
             max = container.getFragen().size();
         }
