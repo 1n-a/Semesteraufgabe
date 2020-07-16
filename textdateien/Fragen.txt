@@ -26,5 +26,14 @@ VierAntwortenFrage$Informatik 1$einfache C-Programme$Welchen Wert hat folgender 
 VierAntwortenFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Welche Abkuerzung steht nicht fuer ein SOLID-Prinzip?$IDP$OCP$SRP$LSP
 MuendlicheAntwortFrage$Informatik 2$Schichtenarchitektur und gutes objektorientiertes Design$Wofuer steht die Abkuerzung SRP?$Single Responsibility Principle
 MuendlicheAntwortFrage$Informatik 2$Java-Grundlagen und Objektorientierung$Wird von abstrakten Klassen oder Interfaces geerbt? Welches Schluesselwort wird dafuer verwendet?$von abstrakten Klassen mit extends
-MuendlicheAntwortFrage$Informatik 2$Informatik 2$Was ist der graphische Unterschied zwischen einer Aggregation und einer Komposition in UML-Klassendiagrammen?$Bei der Komposition ist die Raute ausgefuellt, bei der Aggregation weiss.
-MuendlicheAntwortFrage$Informatik 2$Informatik 2$Wie werden parametrisierte Klassen in UML-Klassendiagrammen dargestellt?$Der Parameter wird in einem gestrichelten Rechteck rechts oben an dem Klassenkaestchen ergaenzt.
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Wie wird ein int Feld erstellt?$int <Name>[];$double <Name>[];$int[] <Name>;$[int] <Name>;
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Wie kann in einem String ein Zeilenumbruch erzeugt werden$\n$\t$\\${Zeilenumbruch}
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Wofür benutzt man symbolische Konstanten?$Code wird übersichtlicher und leichter wartbar$Damit Studenten mehr zu Lernen haben$Ohne Symbolische Konstanten funktioniert ein Programm nicht$Um mehr als eine Funktion erstellen zu koennen
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Ab welchem ASCII Zeichen beginnen Kleinbuchstaben?$97$65$1$60
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Ab welchem ASCII Zeichen beginnen Grossbuchstaben?$65$60$97$1
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Welches Zeichen steht für das logische  "und"?$&&$??$//$||
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Was bedeutet diese Zeichen "<="$kleiner gleich$kleiner$groesser$groesser gleich
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Was macht die Funktion "islower(c)"$Prueft ob c ein Kleinbuchstabe ist$Prueft ob c kleiner ist$Prueft ob c eine Zahl ist$Verkleinert die Konsole bei Ausfuehrung
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Nach welchem Standard wird in der Vorlesung programmiert?$C89$C90$D89$D90
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Welche ist keine Standardbibliothek?$print.h$math.h$time.h$stdio.h
+VierAntwortenFrage$Informatik 1$einfache C-Programme$Was macht "return x"?$Gibt x zurueck$Gibt x aus$Addiert x$Loescht x
