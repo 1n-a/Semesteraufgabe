@@ -153,7 +153,7 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
             new Hauptmenue("Hauptmenue");
         } else if (e.getSource() == cbVorlesungen) {
             int index = cbVorlesungen.getSelectedIndex();
-            System.out.println(index);
+            //System.out.println(index);
             cardLayout.show(pnlMain, Integer.toString(index));
         } else if (e.getSource() instanceof JCheckBox) {
             JCheckBox box = (JCheckBox) e.getSource();

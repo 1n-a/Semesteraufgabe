@@ -179,7 +179,7 @@ public class BuzzermodusManager extends SpielManager {
 					clipEnde = AudioSystem.getClip();
 					clipEnde.open(streamEnde);
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					//e1.printStackTrace();
 				}
 
 				if(counter == 5) {

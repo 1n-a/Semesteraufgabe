@@ -199,14 +199,14 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionL
             name2.setForeground(Color.black);
             spieler1Gedrueckt = true;
             manager.enableFragenGui();
-            System.out.println("a");
+            //System.out.println("a");
             manager.buzzerP1Pressed();
         } else if ((e.getKeyChar()) == 'l') {
             name2.setForeground(Color.yellow);
             name1.setForeground(Color.black);
             spieler1Gedrueckt = false;
             manager.enableFragenGui();
-            System.out.println("l");
+            //System.out.println("l");
             manager.buzzerP2Pressed();
         }
     }

@@ -88,6 +88,7 @@ public class ListDialog extends JDialog implements ActionListener {
 		JOptionPane.showMessageDialog(null, "Waehle zuerst die Frage aus, die du loeschen moechtest!");
 	    } else {
 		container.unlinkFrage(list.getSelectedValue());
+		JOptionPane.showMessageDialog(null, "Die Frage wurde geloescht.");
 		this.updateList();
 	    }
 	}

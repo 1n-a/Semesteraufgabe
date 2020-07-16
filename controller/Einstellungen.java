@@ -40,6 +40,10 @@ public class Einstellungen {
     public boolean load() {
 	ArrayList<String> text = Dateieinleser.dateiEinlesen(dateiname);
 	if (text.size() != 4) {
+	    this.farbe = "schwarz";
+	    this.schriftart = "TimesRoman";
+	    this.schriftgroesse = "12";
+	    this.stil = "plain";
 	    return false;
 	}
 	this.farbe = text.get(0);

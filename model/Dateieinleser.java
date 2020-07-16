@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class Dateieinleser {
 
@@ -29,8 +31,14 @@ public class Dateieinleser {
         	zeilen.add(zeile);
             }
         } catch (IOException e) {
-            System.out.println("Fehler beim Einlesen der Datei " + dateiname);
-            e.printStackTrace();
+            if (dateiname.equals(".\\src\\textdateien\\Fragen.txt")) {
+                JOptionPane.showMessageDialog(null, "Fehler beim Laden der Fragen: Fragen" +
+            	    " können nicht geladen oder persistent gespeichert werden.");
+            } else {
+        	JOptionPane.showMessageDialog(null, "Fehler beim Laden der Einstellungen.");
+            }
+            //System.out.println("Fehler beim Einlesen der Datei " + dateiname);
+            //e.printStackTrace();
         } finally {
             if (in != null)
                 try {

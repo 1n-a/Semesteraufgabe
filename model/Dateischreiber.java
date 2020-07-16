@@ -24,7 +24,7 @@ public class Dateischreiber {
             pWriter = new PrintWriter(new BufferedWriter(new FileWriter(dateiname)));
             pWriter.print(text);
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            //ioe.printStackTrace();
             return false;
         } finally {
             if (pWriter != null){
