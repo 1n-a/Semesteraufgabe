@@ -5,11 +5,12 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 
+import controller.Einstellungen;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.util.concurrent.Flow;
+//import java.util.concurrent.Flow;
 
 
 @SuppressWarnings("serial")
@@ -53,25 +54,29 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionL
         
         this.manager = manager;
         
-        this.setSize(300, 150);
-        this.setLocationRelativeTo(null);
+        //this.setSize(300, 150);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
         setLayout(new GridLayout(5, 1));
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
         JPanel frameFrage = new JPanel(new FlowLayout());
         frameFrage.setBackground(officialColor);
         JPanel framePunktzahl = new JPanel(new FlowLayout());
         framePunktzahl.setBackground(officialColor);
+        framePunktzahl.setPreferredSize(new Dimension(350, 0));
         JPanel frameCountdown = new JPanel(new FlowLayout());
         frameCountdown.setBackground((officialColor));
         JPanel frameUeberspringen = new JPanel(new FlowLayout());
         frameUeberspringen.setBackground((officialColor));
 
         buzzer1 = new JButton("A");
+        buzzer1.setFont(officialFont);
         buzzer2 = new JButton("L");
+        buzzer2.setFont(officialFont);
         ueberspringen = new JButton("Frage ueberspringen");
+        ueberspringen.setFont(officialFont);
 
         spieler1 = "";
         spieler2 = "";
@@ -80,16 +85,25 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionL
         aktuelleFrage = 0;
 
         JLabel stringFrage = new JLabel("Frage ");
+        stringFrage.setFont(officialFont);
         anzeigeAktuelleFrage = new JLabel(String.valueOf(aktuelleFrage));
+        anzeigeAktuelleFrage.setFont(officialFont);
         JLabel trennerFrage = new JLabel(" / ");
+        trennerFrage.setFont(officialFont);
         anzeigeMaxFrage = new JLabel(String.valueOf(maxFrage));
+        anzeigeMaxFrage.setFont(officialFont);
 
 
         name1 = new JLabel(spieler1);
+        name1.setFont(officialFont);
         name2 = new JLabel(spieler2);
+        name2.setFont(officialFont);
         anzeigePunkteSpieler1 = new JLabel(String.valueOf(punktzahl1));
+        anzeigePunkteSpieler1.setFont(officialFont);
         JLabel trennerPunkte = new JLabel(" : ");
+        trennerPunkte.setFont(officialFont);
         anzeigePunkteSpieler2 = new JLabel(String.valueOf(punktzahl2));
+        anzeigePunkteSpieler2.setFont(officialFont);
 
 
         framePunktzahl.add(buzzer1);
@@ -123,6 +137,7 @@ public class GuiStatistikMpBuzzer extends JFrame implements KeyListener, ActionL
         this.add(frameCountdown);
         this.add(frameUeberspringen);
 
+        this.setLocationRelativeTo(null);
         pack();
         setVisible(true);
     }

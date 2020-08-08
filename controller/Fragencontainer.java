@@ -19,6 +19,7 @@ public class Fragencontainer implements Iterable<Frage> {
     private String dateiname = ".\\src\\textdateien\\Fragen.txt";
     
     private Fragencontainer() {
+	fragen = new ArrayList<Frage>();
 	this.load();
 	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 	for (Frage f : fragen) {
@@ -40,6 +41,7 @@ public class Fragencontainer implements Iterable<Frage> {
 	 * :)
      */
     public void linkFrage(Frage f) {
+	//TODO Warum können Fragen mehrfach eingefügt werden?
 	if (!this.fragen.contains(f)) {
 	    this.fragen.add(f);
 	    this.save();
@@ -152,23 +154,37 @@ public class Fragencontainer implements Iterable<Frage> {
      * @return true
      */
     public boolean load() {
+	return this.load(this.dateiname);
+    }
+    
+    /**
+     * Methode zum Einlesen einer anderen Datei als der gespeicherten Standarddatei
+     * @param dateiname
+     * @return
+     */
+    public boolean load(String dateiname) {
 	ArrayList<String> zeilen = Dateieinleser.dateiEinlesen(dateiname);
-	this.fragen = new ArrayList<Frage>();
 	for(String s : zeilen) {
 	    String[] woerter = s.split("\\$");
 	    if (woerter.length >= 1) {
 		if (woerter[0].equals(Fragentyp.VierAntwortenFrage.toString())) {
 		    try {
-			fragen.add(VierAntwortenFrage.StringZuFrage(woerter));
+			if (!fragen.contains(VierAntwortenFrage.StringZuFrage(woerter))) {
+			    fragen.add(VierAntwortenFrage.StringZuFrage(woerter));
+			}
 		    } catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		    }
 		} else if(woerter[0].equals(Fragentyp.MuendlicheAntwortFrage.toString())) {
 		    try {
-			fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter));
+			if (!fragen.contains(MuendlicheAntwortFrage.StringZuFrage(woerter))) {
+			    fragen.add(MuendlicheAntwortFrage.StringZuFrage(woerter));
+			}
 		    } catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		    }
+		} else {
+		    System.out.println("Ungueltige Zeile gelesen");
 		}
 	    }
 	}

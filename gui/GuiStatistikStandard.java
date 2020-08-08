@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.Einstellungen;
+
 import java.awt.*;
 //import java.util.concurrent.Flow;
 
@@ -19,12 +22,12 @@ public class GuiStatistikStandard extends JFrame {
     public GuiStatistikStandard(String title) {
 
         super(title);
-        this.setSize(200, 100);
-        this.setLocationRelativeTo(null);
+        //this.setSize(200, 100);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
         setLayout(new GridLayout(2, 1));
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
         JPanel frameFrage = new JPanel(new FlowLayout());
         frameFrage.setBackground(officialColor);
@@ -33,11 +36,17 @@ public class GuiStatistikStandard extends JFrame {
         
 
         JLabel stringPunkte = new JLabel("Punktzahl: ");
+        stringPunkte.setFont(officialFont);
         anzeigePunkte = new JLabel(String.valueOf(punktzahl));
+        anzeigePunkte.setFont(officialFont);
         JLabel stringFrage = new JLabel("Frage ");
+        stringFrage.setFont(officialFont);
         anzeigeAktuelleFrage = new JLabel(String.valueOf(aktuelleFrage));
+        anzeigeAktuelleFrage.setFont(officialFont);
         JLabel trennerFrage = new JLabel(" / ");
+        trennerFrage.setFont(officialFont);
         anzeigeMaxFrage = new JLabel(String.valueOf(maxFrage));
+        anzeigeMaxFrage.setFont(officialFont);
         
         this.setAktuelleFrage(0);
 
@@ -51,6 +60,8 @@ public class GuiStatistikStandard extends JFrame {
         this.add(framePunktzahl);
         this.add(frameFrage);
 
+        pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 

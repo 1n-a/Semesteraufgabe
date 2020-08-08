@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 
+import controller.Einstellungen;
 import controller.VierAntwortenFrage;
 
 import java.awt.*;
@@ -42,29 +43,37 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
 
         super(title);
         setAntwortGegeben(false);
-        this.setSize(500, 300);
-        this.setLocationRelativeTo(null);
+        //this.setSize(500, 300);
         this.setDefaultCloseOperation((DO_NOTHING_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
 
         buttonA = new JButton("A");
+        buttonA.setFont(officialFont);
         buttonA.setSize(new Dimension(10, 10));
         buttonB = new JButton("B");
+        buttonB.setFont(officialFont);
         buttonB.setSize(new Dimension(10, 10));
         buttonC = new JButton("C");
+        buttonC.setFont(officialFont);
         buttonC.setSize(new Dimension(10, 10));
         buttonD = new JButton("D");
+        buttonD.setFont(officialFont);
         buttonD.setSize(new Dimension(10, 10));
 
         feldARichtig = new JTextArea(aRichtig,0, 0);
+        feldARichtig.setFont(officialFont);
         feldEigenschaftenSetzen(feldARichtig);
         feldAFalsch1 = new JTextArea(aFalsch1,0, 0);
+        feldAFalsch1.setFont(officialFont);
         feldEigenschaftenSetzen(feldAFalsch1);
         feldAFalsch2 = new JTextArea(aFalsch2,0, 0);
+        feldAFalsch2.setFont(officialFont);
         feldEigenschaftenSetzen(feldAFalsch2);
         feldAFalsch3 = new JTextArea(aFalsch3,0, 0);
+        feldAFalsch3.setFont(officialFont);
         feldEigenschaftenSetzen(feldAFalsch3);
 
         scrollFeldARichtig = new JScrollPane(feldARichtig);
@@ -86,6 +95,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
         }
 
         JTextArea frageFeld = new JTextArea(frageText,7, 20);
+        frageFeld.setFont(officialFont);
         feldEigenschaftenSetzen(frageFeld);
         JScrollPane scrollFrageFeld = new JScrollPane(frageFeld);
 
@@ -122,11 +132,15 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
         south.add(navigation, BorderLayout.EAST);
 
         navigation.add(weiter);
+        weiter.setFont(officialFont);
         navigation.add(exit);
+        exit.setFont(officialFont);
         weiter.addActionListener(this);
         exit.addActionListener(this);
         weiter.setVisible(false);
 
+        pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 

@@ -5,6 +5,8 @@
 
 package controller;
 
+import java.util.Arrays;
+
 public class VierAntwortenFrage extends Frage {
     String frage;
     String[] antworten = new String[4];
@@ -100,6 +102,17 @@ public class VierAntwortenFrage extends Frage {
 		this.antworten[1] + "$" + 
 		this.antworten[2] + "$" +
 		this.antworten[3];
+    }
+    
+    @Override 
+    public boolean equals(Object o) {
+	if (o != null && o.getClass().equals(this.getClass())) {
+	    VierAntwortenFrage frage = (VierAntwortenFrage) o;
+	    return (this.getVorlesung().equals(frage.getVorlesung()) && this.getThema().equals(frage.getThema())
+		    && this.getMaxPunkte() == frage.getMaxPunkte() && this.getFrage().equals(frage.getFrage())
+		    && Arrays.equals(this.getAntworten(), frage.getAntworten()));
+	}	
+	return false;
     }
 
 }

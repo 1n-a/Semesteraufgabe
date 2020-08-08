@@ -1,5 +1,6 @@
 package gui;
 
+import controller.Einstellungen;
 import controller.Frage;
 import controller.Fragencontainer;
 import controller.VorlesungenThemenContainer;
@@ -42,11 +43,13 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
         super(new JDialog(), "Fragen filtern", true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         Color officialColor = GuiFarbauswahl.officialColor;
+        Font officialFont = Einstellungen.instance().getOfficialFont();
         this.manager = manager;
 
         VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 
         cbVorlesungen = new JComboBox<>();
+        cbVorlesungen.setFont(officialFont);
         cbVorlesungen.addActionListener(this);
 
         ArrayList<String> listVorlesungen = vtc.getVorlesungen();
@@ -69,6 +72,7 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
 
             for(int j = 0; j < listThemen.size(); ++j) {
                 JCheckBox neuesThema = new JCheckBox(listThemen.get(j));
+                neuesThema.setFont(officialFont);
                 neuesThema.addActionListener(this);
                 neuesPanel.add(neuesThema);
             }
@@ -95,7 +99,9 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
         
         JPanel center = new JPanel(new BorderLayout());
         center.setBackground(officialColor);
-        center.add(new JLabel("Anzahl Fragen: "), BorderLayout.WEST);
+        JLabel anzFragen = new JLabel("Anzahl Fragen: ");
+        anzFragen.setFont(officialFont);
+        center.add(anzFragen, BorderLayout.WEST);
         int max = 0;
         if (container.getFragen().size() > 20) {
             max = 20;
@@ -103,16 +109,20 @@ public class newFilterDialog extends JDialog implements ActionListener, Adjustme
             max = container.getFragen().size();
         }
         anzahlFragen = new JScrollBar(JScrollBar.HORIZONTAL, 1, 0, 1, max);
+        anzahlFragen.setFont(officialFont);
         //anzahlFragen.setMinimumSize(new Dimension(300, 10));
         anzahlFragen.addAdjustmentListener(this);
         center.add(anzahlFragen, BorderLayout.CENTER);
         anzFra = new JLabel("1");
+        anzFra.setFont(officialFont);
         center.add(anzFra, BorderLayout.EAST);
         south.add(center, BorderLayout.NORTH);
         
         
         btnOk = new JButton("OK");
+        btnOk.setFont(officialFont);
         btnAbbrechen = new JButton("Abbrechen");
+        btnAbbrechen.setFont(officialFont);
         navigation.add(btnOk);
         navigation.add(btnAbbrechen);
         btnOk.addActionListener(this);

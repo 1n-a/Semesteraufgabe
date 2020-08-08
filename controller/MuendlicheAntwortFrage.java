@@ -78,4 +78,15 @@ public class MuendlicheAntwortFrage extends Frage {
 		+ this.getFrage() + "$"
 		+ this.getAntwort();
     }
+    
+    @Override
+    public boolean equals(Object o) {
+	if (o != null && o.getClass().equals(this.getClass())) {
+	    MuendlicheAntwortFrage frage = (MuendlicheAntwortFrage) o;
+	    return (this.getVorlesung().equals(frage.getVorlesung())) && this.getThema().equals(frage.getThema())
+		    && this.getMaxPunkte() == frage.getMaxPunkte() && this.getFrage().equals(frage.getFrage())
+		    && this.getAntwort().equals(frage.getAntwort());
+	}
+	return false;
+    }
 }

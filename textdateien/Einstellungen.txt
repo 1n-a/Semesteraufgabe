@@ -1,4 +1,4 @@
-grau
-Minion
-klein
-plain
+pink
+Arial
+15
+normal

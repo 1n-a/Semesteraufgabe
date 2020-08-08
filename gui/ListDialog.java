@@ -33,7 +33,11 @@ public class ListDialog extends JDialog implements ActionListener {
     
     public ListDialog() {
 	super(new JFrame(), "Fragenliste", true);
+	
+	Font officialFont = Einstellungen.instance().getOfficialFont();
+	
 	list = new JList<Frage>();
+	list.setFont(officialFont);
 	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	this.updateList();
 	JScrollPane sp = new JScrollPane(list);
@@ -54,8 +58,11 @@ public class ListDialog extends JDialog implements ActionListener {
 	loeschen.addActionListener(this);
 	
 	JLabel hin = new JLabel("neue Frage");
+	hin.setFont(officialFont);
 	JLabel bearb = new JLabel("Frage bearbeiten");
+	bearb.setFont(officialFont);
 	JLabel loesch = new JLabel("Frage loeschen");
+	loesch.setFont(officialFont);
 	
 	south.add(hinzufuegen);
 	south.add(hin);

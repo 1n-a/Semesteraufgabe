@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.Einstellungen;
+
 import java.awt.*;
 
 
@@ -22,12 +25,13 @@ public class GuiStatistikMp extends JFrame {
     public GuiStatistikMp(String title) {
 
         super(title);
-        this.setSize(200, 100);
+        //this.setSize(200, 100);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
         setLayout(new GridLayout(2, 1));
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
         JPanel frameFrage = new JPanel(new FlowLayout());
         frameFrage.setBackground(officialColor);
@@ -35,15 +39,24 @@ public class GuiStatistikMp extends JFrame {
         framePunktzahl.setBackground(officialColor);
 
         JLabel stringFrage = new JLabel("Frage ");
+        stringFrage.setFont(officialFont);
         anzeigeAktuelleFrage = new JLabel(0 + "");
+        anzeigeAktuelleFrage.setFont(officialFont);
         JLabel trennerFrage = new JLabel(" / ");
+        trennerFrage.setFont(officialFont);
         anzeigeMaxFrage = new JLabel(0 + "");
+        anzeigeMaxFrage.setFont(officialFont);
 
         name1 = new JLabel("");
+        name1.setFont(officialFont);
         name2 = new JLabel("");
+        name2.setFont(officialFont);
         anzeigePunkteSpieler1 = new JLabel(0 + "");
+        anzeigePunkteSpieler1.setFont(officialFont);
         JLabel trennerPunkte = new JLabel(" : ");
+        trennerPunkte.setFont(officialFont);
         anzeigePunkteSpieler2 = new JLabel(0 + "");
+        anzeigePunkteSpieler2.setFont(officialFont);
 
 
         framePunktzahl.add(name1);
@@ -61,6 +74,7 @@ public class GuiStatistikMp extends JFrame {
         this.add(framePunktzahl);
         this.add(frameFrage);
 
+        this.pack();
         setVisible(true);
     }
     

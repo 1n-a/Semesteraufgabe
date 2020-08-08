@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,25 +35,31 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	this.setLayout(new BorderLayout());
 	this.alteFrage = frage;
 	
+	Font officialFont = Einstellungen.instance().getOfficialFont();
+	
 	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 	
 	JPanel north = new JPanel();
 	north.setLayout(new FlowLayout());
 	JLabel vorl = new JLabel("Vorlesung: ");
+	vorl.setFont(officialFont);
 	north.add(vorl);
 	for (String vorles : vtc.getVorlesungen()) {
 	    vorlesung.addItem(vorles);
 	}
 	vorlesung.addItem("eigene Vorlesung...");
 	vorlesung.setEditable(true);
+	vorlesung.setFont(officialFont);
 	north.add(vorlesung);
 	JLabel them = new JLabel("Thema: ");
+	them.setFont(officialFont);
 	north.add(them);
 	for (String the : vtc.getThemen()) {
 	    thema.addItem(the);
 	}
 	thema.addItem("eigenes Thema...");
 	thema.setEditable(true);
+	thema.setFont(officialFont);
 	north.add(thema);
 	north.setBackground(GuiFarbauswahl.officialColor);
 	this.add(north, BorderLayout.NORTH);
@@ -60,20 +67,26 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	JPanel center = new JPanel();
 	center.setLayout(new GridLayout(2, 2));
 	JLabel fr = new JLabel("Frage: ");
+	fr.setFont(officialFont);
 	center.add(fr);
 	center.add(this.frage);
+	this.frage.setFont(officialFont);
 	JLabel antw = new JLabel("Antwort: ");
+	antw.setFont(officialFont);
 	center.add(antw);
 	center.add(antwort);
+	this.antwort.setFont(officialFont);
 	center.setBackground(GuiFarbauswahl.officialColor);
 	this.add(center, BorderLayout.CENTER);
 	
 	JPanel south = new JPanel();
 	south.setLayout(new FlowLayout());
 	ok = new JButton("OK");
+	ok.setFont(officialFont);
 	ok.addActionListener(this);
 	south.add(ok);
 	abbrechen = new JButton("Abbrechen");
+	abbrechen.setFont(officialFont);
 	abbrechen.addActionListener(this);
 	south.add(abbrechen);
 	south.setBackground(GuiFarbauswahl.officialColor);

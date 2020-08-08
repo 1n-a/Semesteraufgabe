@@ -7,6 +7,7 @@
 package controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import model.Dateieinleser;
@@ -100,9 +101,25 @@ public class Einstellungen {
 	return this.stil;
     }
     
+    public int getStilInt() {
+	if (this.getStil().equals("fett")) {
+	    return Font.BOLD;
+	} else if (this.getStil().equals("kursiv")) {
+	    return Font.ITALIC;
+	} else if (this.getStil().equals("normal")) {
+	    return Font.PLAIN;
+	} else {
+	    return -1;
+	}
+    }
+    
     public void setStil(String stil) {
 	this.stil = stil;
 	this.save();
+    }
+    
+    public Font getOfficialFont() {
+	return new Font(this.getSchriftart(), this.getStilInt(), Integer.valueOf(this.getSchriftgroesse()));
     }
     
     /*public static void main(String[] args) {

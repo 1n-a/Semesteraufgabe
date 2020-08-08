@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,19 +38,24 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	this.setLayout(new BorderLayout());
 	this.alteFrage = frage;
 	
+	Font officialFont = Einstellungen.instance().getOfficialFont();
+	
 	VorlesungenThemenContainer vtc = VorlesungenThemenContainer.instance();
 	
 	JPanel north = new JPanel();
 	north.setLayout(new FlowLayout());
 	JLabel vorl = new JLabel("Vorlesung: ");
+	vorl.setFont(officialFont);
 	north.add(vorl);
 	for (String vorles : vtc.getVorlesungen()) {
 	    vorlesung.addItem(vorles);
 	}
 	vorlesung.addItem("eigene Vorlesung...");
 	vorlesung.setEditable(true);
+	vorlesung.setFont(officialFont);
 	north.add(vorlesung);
 	JLabel them = new JLabel("Thema: ");
+	them.setFont(officialFont);
 	north.add(them);
 	for (String the : vtc.getThemen()) {
 	    thema.addItem(the);
@@ -57,6 +63,7 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	thema.addItem("eigenes Thema...");
 	north.add(thema);
 	thema.setEditable(true);
+	thema.setFont(officialFont);
 	north.setBackground(GuiFarbauswahl.officialColor);
 	this.add(north, BorderLayout.NORTH);
 	
@@ -66,23 +73,29 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	JPanel centerNorth = new JPanel();
 	centerNorth.setLayout(new FlowLayout());
 	JLabel fr = new JLabel("Frage: ");
+	fr.setFont(officialFont);
 	centerNorth.add(fr);
 	centerNorth.add(this.frage);
+	this.frage.setFont(officialFont);
 	centerNorth.setBackground(GuiFarbauswahl.officialColor);
 	center.add(centerNorth, BorderLayout.NORTH);
 	
 	JPanel centerCenter = new JPanel();
 	centerCenter.setLayout(new GridLayout(2, 8));
 	JLabel ra = new JLabel("richtige Antwort: ");
+	ra.setFont(officialFont);
 	centerCenter.add(ra);
 	centerCenter.add(richtigeAntwort);
 	JLabel f1 = new JLabel("falsche Antwort: ");
+	f1.setFont(officialFont);
 	centerCenter.add(f1);
 	centerCenter.add(falscheAntwort1);
 	JLabel f2 = new JLabel("falsche Antwort: ");
+	f2.setFont(officialFont);
 	centerCenter.add(f2);
 	centerCenter.add(falscheAntwort2);
 	JLabel f3 = new JLabel("falsche Antwort: ");
+	f3.setFont(officialFont);
 	centerCenter.add(f3);
 	centerCenter.add(falscheAntwort3);
 	centerCenter.setBackground(GuiFarbauswahl.officialColor);
@@ -94,13 +107,23 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	JPanel south = new JPanel();
 	south.setLayout(new FlowLayout());
 	ok = new JButton("OK");
+	ok.setFont(officialFont);
 	ok.addActionListener(this);
 	south.add(ok);
 	abbrechen = new JButton("Abbrechen");
+	abbrechen.setFont(officialFont);
 	abbrechen.addActionListener(this);
 	south.add(abbrechen);
 	south.setBackground(GuiFarbauswahl.officialColor);
 	this.add(south, BorderLayout.SOUTH);
+	
+	vorlesung.setFont(officialFont);
+	thema.setFont(officialFont);
+	this.frage.setFont(officialFont);
+	richtigeAntwort.setFont(officialFont);
+	falscheAntwort1.setFont(officialFont);
+	this.falscheAntwort2.setFont(officialFont);
+	this.falscheAntwort3.setFont(officialFont);
 	
 	if (frage == null) {
 	    this.setTitle("neue VierAntwortenFrage");

@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import controller.Einstellungen;
 import controller.MuendlicheAntwortFrage;
 
 import java.awt.*;
@@ -37,11 +38,12 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
 
         super(title);
         setAntwortGegeben(false);
-        this.setSize(500, 300);
-        this.setLocationRelativeTo(null);
+        //this.setSize(500, 500);
         this.setDefaultCloseOperation((DO_NOTHING_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
+        
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
         frageText = frageT;
         loesungText = loesungT;
@@ -53,6 +55,7 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
         frageFeld.setDisabledTextColor(Color.black);
         frageFeld.setLineWrap(true);
         frageFeld.setWrapStyleWord(true);
+        frageFeld.setFont(officialFont);
 
         this.add(scrollFrageFeld, BorderLayout.NORTH);
 
@@ -68,13 +71,17 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
         frageNavigation.add(frage);
         loesung.addActionListener(this);
         frage.addActionListener(this);
+        loesung.setFont(officialFont);
+        frage.setFont(officialFont);
 
         JPanel navigation = new JPanel(new FlowLayout());
         navigation.setBackground(officialColor);
         south.add(navigation, BorderLayout.EAST);
 
         navigation.add(weiter);
+        weiter.setFont(officialFont);
         navigation.add(exit);
+        exit.setFont(officialFont);
         exit.addActionListener(this);
 
 
@@ -83,9 +90,12 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
         south.add(loesungPanel, BorderLayout.NORTH);
 
         loesungPanel.add(richtigeAntwort);
+        richtigeAntwort.setFont(officialFont);
         loesungPanel.add(ja);
+        ja.setFont(officialFont);
         ja.addActionListener(this);
         loesungPanel.add(nein);
+        nein.setFont(officialFont);
         nein.addActionListener(this);
         frage.setVisible(false);
         ja.setVisible(false);
@@ -93,7 +103,10 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
         richtigeAntwort.setVisible(false);
         weiter.setVisible(false);
         weiter.addActionListener(this);
+        loesungPanel.setPreferredSize(new Dimension(300, 50));
 
+        pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 

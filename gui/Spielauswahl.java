@@ -1,6 +1,9 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.Einstellungen;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,13 +19,15 @@ public class Spielauswahl extends JFrame implements ActionListener {
     public Spielauswahl(String title) {
         super(title);
         this.setSize(500, 300);
-        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
+        Font officialFont = Einstellungen.instance().getOfficialFont();
 
         JLabel einzel = new JLabel("      Ein Spieler");
+        einzel.setFont(officialFont);
         JLabel duo = new JLabel("      Zwei Spieler");
+        duo.setFont(officialFont);
         JLabel blank = new JLabel();
 
         JPanel west = new JPanel(new GridLayout(0, 2));
@@ -31,9 +36,12 @@ public class Spielauswahl extends JFrame implements ActionListener {
         west.add(einzel);
         west.add(duo);
         west.add(standard);
+        standard.setFont(officialFont);
         west.add(abwechselnd);
+        abwechselnd.setFont(officialFont);
         west.add(blank);
         west.add(duell);
+        duell.setFont(officialFont);
 
         this.add(west, BorderLayout.WEST);
 
@@ -44,6 +52,7 @@ public class Spielauswahl extends JFrame implements ActionListener {
         south.add(navigation, BorderLayout.EAST);
 
         navigation.add(exit);
+        exit.setFont(officialFont);
         exit.addActionListener(this);
 
         this.add(south, BorderLayout.SOUTH);
@@ -51,6 +60,8 @@ public class Spielauswahl extends JFrame implements ActionListener {
         this.abwechselnd.addActionListener(this);
         this.duell.addActionListener(this);
 
+        //this.pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 

@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import controller.Einstellungen;
+
 @SuppressWarnings("serial")
 public class HinzufuegeDialog extends JDialog implements ActionListener {
     JComboBox<String> fragen;
@@ -22,9 +25,13 @@ public class HinzufuegeDialog extends JDialog implements ActionListener {
 	super(owner, "Frage hinzufuegen", true);
 	this.setLayout(new GridLayout(0, 1));
 	
+	Font officalFont = Einstellungen.instance().getOfficialFont();
+	
 	JLabel frage = new JLabel("Was fuer eine Frage moechtest du hinzufuegen?");
+	frage.setFont(officalFont);
 	this.add(frage);
 	fragen = new JComboBox<String>();
+	fragen.setFont(officalFont);
 	fragen.addItem("VierAntwortenFrage");
 	fragen.addItem("MuendlicheAntwortFrage");
 	this.add(fragen);
@@ -32,9 +39,11 @@ public class HinzufuegeDialog extends JDialog implements ActionListener {
 	JPanel south = new JPanel();
 	south.setLayout(new FlowLayout());
 	ok = new JButton("OK");
+	ok.setFont(officalFont);
 	ok.addActionListener(this);
 	south.add(ok);
 	abbrechen = new JButton("Abbrechen");
+	abbrechen.setFont(officalFont);
 	abbrechen.addActionListener(this);
 	south.add(abbrechen);
 	

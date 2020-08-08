@@ -34,6 +34,8 @@ public class GuiFarbauswahl extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
 
+        Font officialFont = Einstellungen.instance().getOfficialFont();
+        
         dunkelLila.setBackground(new Color(Farbe.dunkelLila.getValue1(), Farbe.dunkelLila.getValue2(), Farbe.dunkelLila.getValue3()));
         gelb.setBackground(new Color(Farbe.gelb.getValue1(), Farbe.gelb.getValue2(), Farbe.gelb.getValue3()));
         schwarz.setBackground(new Color(Farbe.schwarz.getValue1(), Farbe.schwarz.getValue2(), Farbe.schwarz.getValue3()));
@@ -41,7 +43,9 @@ public class GuiFarbauswahl extends JFrame implements ActionListener {
         grau.setBackground(new Color(Farbe.grau.getValue1(), Farbe.grau.getValue2(), Farbe.grau.getValue3()));
         pink.setBackground(new Color(Farbe.pink.getValue1(), Farbe.pink.getValue2(), Farbe.pink.getValue3()));
 
-        this.add(new JLabel("Waehlen Sie eine neue Farbe!"), BorderLayout.NORTH);
+        JLabel temp = new JLabel("Waehlen Sie eine neue Farbe!");
+        temp.setFont(officialFont);
+        this.add(temp, BorderLayout.NORTH);
 
         JPanel farbWahl = new JPanel(new GridLayout(3, 3));
         farbWahl.add(dunkelLila);
@@ -63,6 +67,7 @@ public class GuiFarbauswahl extends JFrame implements ActionListener {
         this.add(south, BorderLayout.SOUTH);
 
         JPanel navigation = new JPanel(new FlowLayout());
+        exit.setFont(officialFont);
         navigation.add(exit);
         exit.addActionListener(this);
 

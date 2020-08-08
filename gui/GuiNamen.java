@@ -1,10 +1,14 @@
 package gui;
 
 import javax.swing.*;
+
+import controller.Einstellungen;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class GuiNamen extends JFrame implements ActionListener {
 
     private JButton exit = new JButton("Hauptmenue");
@@ -19,11 +23,13 @@ public class GuiNamen extends JFrame implements ActionListener {
         
         this.modus = modus;
         
-        this.setSize(300, 150);
-        this.setLocationRelativeTo(null);
+        Font officialFont = Einstellungen.instance().getOfficialFont();
+        
+        //this.setSize(300, 180);
         this.setDefaultCloseOperation((DISPOSE_ON_CLOSE));
         Color officialColor = GuiFarbauswahl.officialColor;
         this.getContentPane().setBackground(officialColor);
+        //this.setBackground(officialColor);
 
         //JPanel center = new JPanel(new BorderLayout());
         //center.setBackground(officialColor);
@@ -34,11 +40,14 @@ public class GuiNamen extends JFrame implements ActionListener {
         JPanel namenPanel = new JPanel(new BorderLayout());
         
         JLabel nameEingeben = new JLabel("Bitte Name eingeben!");
+        nameEingeben.setFont(officialFont);
         //JLabel labelName1 = new JLabel("Spieler 1");
         //JLabel labelName2 = new JLabel("Spieler 2");
 
         fieldName1 = new JTextArea("Spieler1", 1, 15);
         fieldName2 = new JTextArea("Spieler2", 1, 15);
+        fieldName1.setFont(officialFont);
+        fieldName2.setFont(officialFont);
 
 
         //panelName1.add(labelName1);
@@ -65,9 +74,13 @@ public class GuiNamen extends JFrame implements ActionListener {
 
         navigation.add(weiter);
         weiter.addActionListener(this);
+        weiter.setFont(officialFont);
         navigation.add(exit);
         exit.addActionListener(this);
+        exit.setFont(officialFont);
 
+        pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 
