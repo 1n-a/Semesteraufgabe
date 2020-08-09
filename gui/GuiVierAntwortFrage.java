@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collections;
 
+@SuppressWarnings("serial")
 public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
 
     private char loesung;
@@ -139,7 +140,7 @@ public class GuiVierAntwortFrage extends GuiFrage implements ActionListener {
         exit.addActionListener(this);
         weiter.setVisible(false);
 
-        pack();
+        this.setSize(600, 600);
         this.setLocationRelativeTo(null);
         setVisible(true);
     }

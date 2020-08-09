@@ -13,6 +13,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -23,11 +25,11 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
     Fragencontainer container = Fragencontainer.instance();
     JComboBox<String> vorlesung = new JComboBox<>();
     JComboBox<String> thema = new JComboBox<>();
-    JTextField frage = new JTextField("", 20);
-    JTextField richtigeAntwort = new JTextField("", 20);
-    JTextField falscheAntwort1 = new JTextField("", 20);
-    JTextField falscheAntwort2 = new JTextField("", 20);
-    JTextField falscheAntwort3 = new JTextField("", 20);
+    JTextArea frage = new JTextArea("", 1, 20);
+    JTextArea richtigeAntwort = new JTextArea("", 1, 20);
+    JTextArea falscheAntwort1 = new JTextArea("", 1, 20);
+    JTextArea falscheAntwort2 = new JTextArea("", 1, 20);
+    JTextArea falscheAntwort3 = new JTextArea("", 1, 20);
     JButton ok;
     JButton abbrechen;
     Frage alteFrage;
@@ -75,7 +77,7 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	JLabel fr = new JLabel("Frage: ");
 	fr.setFont(officialFont);
 	centerNorth.add(fr);
-	centerNorth.add(this.frage);
+	centerNorth.add(new JScrollPane(this.frage));
 	this.frage.setFont(officialFont);
 	centerNorth.setBackground(GuiFarbauswahl.officialColor);
 	center.add(centerNorth, BorderLayout.NORTH);
@@ -85,19 +87,19 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 	JLabel ra = new JLabel("richtige Antwort: ");
 	ra.setFont(officialFont);
 	centerCenter.add(ra);
-	centerCenter.add(richtigeAntwort);
+	centerCenter.add(new JScrollPane(richtigeAntwort));
 	JLabel f1 = new JLabel("falsche Antwort: ");
 	f1.setFont(officialFont);
 	centerCenter.add(f1);
-	centerCenter.add(falscheAntwort1);
+	centerCenter.add(new JScrollPane(falscheAntwort1));
 	JLabel f2 = new JLabel("falsche Antwort: ");
 	f2.setFont(officialFont);
 	centerCenter.add(f2);
-	centerCenter.add(falscheAntwort2);
+	centerCenter.add(new JScrollPane(falscheAntwort2));
 	JLabel f3 = new JLabel("falsche Antwort: ");
 	f3.setFont(officialFont);
 	centerCenter.add(f3);
-	centerCenter.add(falscheAntwort3);
+	centerCenter.add(new JScrollPane(falscheAntwort3));
 	centerCenter.setBackground(GuiFarbauswahl.officialColor);
 	center.add(centerCenter);
 	
@@ -154,6 +156,16 @@ public class VierAntwortenFrageBearbeiteDialog extends JDialog implements Action
 		    || this.falscheAntwort2.getText() == null || this.falscheAntwort2.getText().equals("")
 		    || this.falscheAntwort3.getText() == null || this.falscheAntwort3.getText().equals("")) {
 		JOptionPane.showMessageDialog(null, "Die falschen Antworten dürfen nicht leer sein.");
+	    } else if (this.frage.getText().contains("\n")) {
+		JOptionPane.showMessageDialog(this, "Die Frage darf nicht aus mehreren Zeilen bestehen.");
+	    } else if (this.frage.getText().contains("$")) {
+		JOptionPane.showMessageDialog(this, "Das Zeichen '$' ist in der Frage nicht erlaubt.");
+	    } else if (this.richtigeAntwort.getText().contains("\n") || this.falscheAntwort1.getText().contains("\n")
+		    || this.falscheAntwort2.getText().contains("\n") || this.falscheAntwort3.getText().contains("\n")) {
+		JOptionPane.showMessageDialog(this, "Keine Antwort darf aus mehreren Zeilen bestehen.");
+	    } else if (this.richtigeAntwort.getText().contains("$") || this.falscheAntwort1.getText().contains("$") 
+		    || this.falscheAntwort2.getText().contains("$") || this.falscheAntwort3.getText().contains("$")) {
+		JOptionPane.showMessageDialog(this, "Das Zeichen '$' ist in den Antworten nicht erlaubt");
 	    } else {
 		VierAntwortenFrage frage = new VierAntwortenFrage((String) this.vorlesung.getSelectedItem(), 
 			(String) this.thema.getSelectedItem(), this.frage.getText(), this.richtigeAntwort.getText(), 

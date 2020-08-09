@@ -103,9 +103,8 @@ public class GuiMuendlicheAntwortFrage extends GuiFrage implements ActionListene
         richtigeAntwort.setVisible(false);
         weiter.setVisible(false);
         weiter.addActionListener(this);
-        loesungPanel.setPreferredSize(new Dimension(300, 50));
 
-        pack();
+        this.setSize(600, 600);
         this.setLocationRelativeTo(null);
         setVisible(true);
     }

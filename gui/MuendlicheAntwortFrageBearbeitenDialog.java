@@ -14,7 +14,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 
 import controller.*;
@@ -24,8 +27,8 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
     Fragencontainer container = Fragencontainer.instance();
     JComboBox<String> vorlesung = new JComboBox<>();
     JComboBox<String> thema = new JComboBox<>();
-    JTextField frage = new JTextField("", 20);
-    JTextField antwort = new JTextField("", 20);
+    JTextArea frage = new JTextArea("", 1, 20);
+    JTextArea antwort = new JTextArea("", 1, 20);
     JButton ok;
     JButton abbrechen;
     Frage alteFrage;
@@ -69,12 +72,12 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 	JLabel fr = new JLabel("Frage: ");
 	fr.setFont(officialFont);
 	center.add(fr);
-	center.add(this.frage);
+	center.add(new JScrollPane(this.frage));
 	this.frage.setFont(officialFont);
 	JLabel antw = new JLabel("Antwort: ");
 	antw.setFont(officialFont);
 	center.add(antw);
-	center.add(antwort);
+	center.add(new JScrollPane(antwort));
 	this.antwort.setFont(officialFont);
 	center.setBackground(GuiFarbauswahl.officialColor);
 	this.add(center, BorderLayout.CENTER);
@@ -114,6 +117,14 @@ public class MuendlicheAntwortFrageBearbeitenDialog extends JDialog implements A
 		JOptionPane.showMessageDialog(null, "Die Frage darf nicht leer sein.");
 	    } else if (this.antwort.getText() == null || this.antwort.getText().equals("")) {
 		JOptionPane.showMessageDialog(null, "Die Antwort darf nicht leer sein.");
+	    } else if (this.frage.getText().contains("\n")) {
+		JOptionPane.showMessageDialog(this, "Die Frage darf nicht aus mehreren Zeilen bestehen.");
+	    } else if (this.antwort.getText().contains("\n")) {
+		JOptionPane.showMessageDialog(this, "Die Antwort darf nicht aus mehreren Zeilen bestehen.");
+	    } else if (this.frage.getText().contains("$")) {
+		JOptionPane.showMessageDialog(this, "Das Zeichen '$' ist in der Frage nicht erlaubt.");
+	    } else if (this.antwort.getText().contains("$")) {
+		JOptionPane.showMessageDialog(this, "Das Zeichen'$' ist in der Antwort nicht erlaubt");
 	    } else {
 		MuendlicheAntwortFrage frage = new MuendlicheAntwortFrage((String) this.vorlesung.getSelectedItem(), 
 			(String) this.thema.getSelectedItem(), this.frage.getText(), this.antwort.getText());
